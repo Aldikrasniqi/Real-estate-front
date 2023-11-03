@@ -1,5 +1,5 @@
 import React from 'react';
-import { getCurrentUser } from '../services/auth-service';
+import { getCurrentUser } from '@/services/auth-service';
 // @ts-ignore
 const Profile: React.FC = () => {
   const currentUser = getCurrentUser();
