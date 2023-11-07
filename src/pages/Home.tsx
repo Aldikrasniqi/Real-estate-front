@@ -1,0 +1,55 @@
+import React, { useState, useEffect } from 'react';
+import Header from '../layouts/Header';
+import About from '../components/About';
+import { getPublicContent } from '../services/user-service';
+// @ts-ignore
+const Home: React.FC = () => {
+  const [content, setContent] = useState<string>('');
+
+  useEffect(() => {
+    getPublicContent().then(
+      (response) => {
+        setContent(response.data);
+      },
+      (err) => {
+        const _content =
+          (err.response && err.response.data && err.response.data.message) ||
+          err.message ||
+          err.toString();
+
+        setContent(_content);
+      }
+    );
+  }, []);
+
+  return (
+    <>
+      <div
+        className="w-full h-screen"
+        style={{
+          backgroundImage: `url('https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&q=80&w=2070&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      >
+        <Header />
+
+        <div className="flex flex-col w-full justify-center items-start ml-28 h-[700px]">
+          <h1 className="text-7xl text-white font-bold leading-[6rem] tracking-widest">
+            Find Your <span className="text-[#1DAEFF]">Dream Home</span> <br />{' '}
+            with Crypto
+          </h1>
+        </div>
+      </div>
+
+      <div
+        id="about"
+        className="flex flex-col w-full justify-center items-start ml-28 h-[700px]"
+      >
+        <About />
+      </div>
+    </>
+  );
+};
+
+export default Home;

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { API_URL } from '@/constants/api';
+import { API_URL } from '../constants/api';
 import authHeader from './auth-header';
 
 export const getPublicContent = () => {
@@ -14,10 +14,8 @@ export const getUserBoard = () => {
 
 export const getModeratorBoard = () => {
   return axios.get(API_URL + 'mod', { headers: authHeader() });
-
 };
 
 export const getAdminBoard = () => {
-    return axios.get(API_URL + 'admin', { headers: authHeader() });
-    
+    return axios.get(API_URL + 'admin', { headers: authHeader() });  
 }

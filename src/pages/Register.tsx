@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
-import IUser from '@/types/user.type';
-import { register } from '@/services/auth-service';
+import IUser from '../types/user.type';
+import { register } from '../services/auth-service';
 // @ts-ignore
 const Register: React.FC = () => {
   const [successful, setSuccessful] = useState<boolean>(false);

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import { getModeratorBoard } from "@/services/user-service";
+import { getModeratorBoard } from "../services/user-service";
 // @ts-ignore
 const BoardModerator: React.FC = () => {
   const [content, setContent] = useState<string>("");
