@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import Header from '../layouts/Header';
 import About from '../components/About';
+import Map from '../components/Map';
 import { getPublicContent } from '../services/user-service';
 // @ts-ignore
 const Home: React.FC = () => {
+   
   const [content, setContent] = useState<string>('');
 
   useEffect(() => {
@@ -24,6 +26,7 @@ const Home: React.FC = () => {
 
   return (
     <>
+      {/* welcome header */}
       <div
         className="w-full h-screen"
         style={{
@@ -33,18 +36,31 @@ const Home: React.FC = () => {
         }}
       >
         <Header />
-
-        <div className="flex flex-col w-full justify-center items-start ml-28 h-[700px]">
+        <div className="flex flex-col w-full justify-center items-start  h-[700px]">
           <h1 className="text-7xl text-white font-bold leading-[6rem] tracking-widest">
             Find Your <span className="text-[#1DAEFF]">Dream Home</span> <br />{' '}
             with Crypto
           </h1>
         </div>
       </div>
+      {/* propery listing container */}
+      <div>
+        
+      </div>
 
+      {/* Map Listing Neighborhood */}
+      <div>
+        <Map />
+      </div>
+      {/* about section */}
       <div
         id="about"
-        className="flex flex-col w-full justify-center items-start ml-28 h-[700px]"
+        className="flex flex-col w-full justify-center items-start h-[600px]"
+        style={{
+          backgroundImage: `url('https://images.unsplash.com/photo-1567018955753-472cad20a0d0?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
       >
         <About />
       </div>

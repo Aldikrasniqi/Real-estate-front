@@ -5,6 +5,14 @@ import * as AuthService from '../services/auth-service';
 import IUser from '../types/user.type';
 // @ts-ignore
 const Header: React.FC = () => {
+  const param = window.location.pathname
+  console.log('the param is: ' + param)
+  // @ts-ignore
+  if(param == '/'){
+    console.log('you are in the home page')
+  }else{
+    console.log('you are not in the home page')
+  }
   const [isMenuOpen, setMenuOpen] = useState(false);
   const [showModeratorBoard, setShowModeratorBoard] = useState<boolean>(false);
   const [showAdminBoard, setShowAdminBoard] = useState<boolean>(false);
@@ -121,8 +129,19 @@ const Header: React.FC = () => {
               <div className="hidden md:flex items-center space-x-1 text-zinc-200 hover:text-white">
                 <Link
                   to="/"
-                  className="py-5 px-3 text-zinc-200 hover:text-white text-base active:text-white hover:underline"
+                  className="py-5 px-3 text-zinc-200 hover:text-white text-base active:text-white hover:underline flex flex-col items-center"
+                  
                 >
+                  <span // if param is ' ' than make the home page active
+                  style={{ 
+                    backgroundColor: param == '/' ? '#1DAEFF' : 'transparent',
+                    width: '10px',
+                    height: '10px',
+                    display: 'block',
+                    borderRadius: '100px'
+                  }}>
+
+                  </span>
                   Home
                 </Link>
                 <ScrollLink
