@@ -34,7 +34,6 @@ const App: React.FC = () => {
                 <Route path="/user" element={<BoardUser />} />
                 <Route path="/mod" element={<BoardModerator />} />
                 <Route path="/admin" element={<BoardAdmin />} />
-
               </Routes>
             </>
           }

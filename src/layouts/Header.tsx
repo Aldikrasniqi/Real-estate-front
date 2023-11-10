@@ -129,7 +129,7 @@ const Header: React.FC = () => {
               <div className="hidden md:flex items-center space-x-1 text-zinc-200 hover:text-white">
                 <Link
                   to="/"
-                  className="py-5 px-3 text-zinc-200 hover:text-white text-base active:text-white hover:underline flex flex-col items-center"
+                  className="py-5 px-3 text-zinc-200 hover:text-white text-base active:text-white hover:underline flex flex-col-reverse	justify-center items-center"
                   
                 >
                   <span // if param is ' ' than make the home page active
@@ -138,6 +138,8 @@ const Header: React.FC = () => {
                     width: '10px',
                     height: '10px',
                     display: 'block',
+                    position: 'absolute',
+                    marginTop: '33px',
                     borderRadius: '100px'
                   }}>
 

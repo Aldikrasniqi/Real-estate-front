@@ -3,6 +3,9 @@ import Header from '../layouts/Header';
 import About from '../components/About';
 import Map from '../components/Map';
 import { getPublicContent } from '../services/user-service';
+import ProperyCard from '../components/ProperyCard';
+import Contact from '../components/Contact';
+import Footer from '../layouts/Footer';
 // @ts-ignore
 const Home: React.FC = () => {
    
@@ -25,7 +28,7 @@ const Home: React.FC = () => {
   }, []);
 
   return (
-    <>
+    <div className='bg-[#000] text-white'>
       {/* welcome header */}
       <div
         className="w-full h-screen"
@@ -36,7 +39,7 @@ const Home: React.FC = () => {
         }}
       >
         <Header />
-        <div className="flex flex-col w-full justify-center items-start  h-[700px]">
+        <div className="flex flex-col w-10/12 mx-auto justify-center items-start h-[700px]">
           <h1 className="text-7xl text-white font-bold leading-[6rem] tracking-widest">
             Find Your <span className="text-[#1DAEFF]">Dream Home</span> <br />{' '}
             with Crypto
@@ -45,7 +48,9 @@ const Home: React.FC = () => {
       </div>
       {/* propery listing container */}
       <div>
-        
+       
+          <ProperyCard />
+
       </div>
 
       {/* Map Listing Neighborhood */}
@@ -55,7 +60,7 @@ const Home: React.FC = () => {
       {/* about section */}
       <div
         id="about"
-        className="flex flex-col w-full justify-center items-start h-[600px]"
+        className="flex flex-col w-full justify-center items-start h-[700px]"
         style={{
           backgroundImage: `url('https://images.unsplash.com/photo-1567018955753-472cad20a0d0?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)`,
           backgroundSize: 'cover',
@@ -64,7 +69,14 @@ const Home: React.FC = () => {
       >
         <About />
       </div>
-    </>
+      <div className='h-[700px] max-w-screen-xl mx-auto'>
+        <Contact />
+      </div>
+      <div>
+        {/* footer */}
+        <Footer/>
+      </div>
+    </div>
   );
 };
 
