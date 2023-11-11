@@ -7,10 +7,9 @@ const About: React.FC = () => {
             'linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, #000 100%)',
           color: '#fff',
           height: '100vh',
-          overflow: 'scroll',
         }}
       >
-        <div className="flex lg:flex-row flex-col w-full mx-auto items-center justify-center h-full">
+        <div className="flex w-full mx-auto items-center justify-center flex-wrap h-full">
           <div className="lg:w-2/5 flex flex-col lg:items-start items-center gap-4 p-3">
             <h1 className="text-[#1DAEFF] text-3xl font-semibold">About us</h1>
             <p className="text-[#FFFBFB] text-base font-normal lg:text-start text-center">

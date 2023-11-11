@@ -53,7 +53,7 @@ const Login: React.FC<LoginProps> = () => {
   return (
     <>
       <section className=" ">
-        <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto lg:py-0 h-screen ">
+        <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto lg:py-0 h-screen">
           <Link
             to="/"
             className="flex items-center mb-6 text-2xl font-bold text-gray-900 "
@@ -75,7 +75,6 @@ const Login: React.FC<LoginProps> = () => {
                 initialValues={initialValues}
                 validationSchema={validationSchema}
                 onSubmit={handleLogin}
-                className="space-y-4 md:space-y-6"
               >
                 <Form>
                   <div>

@@ -6,13 +6,7 @@ import IUser from '../types/user.type';
 // @ts-ignore
 const Header: React.FC = () => {
   const param = window.location.pathname
-  console.log('the param is: ' + param)
   // @ts-ignore
-  if(param == '/'){
-    console.log('you are in the home page')
-  }else{
-    console.log('you are not in the home page')
-  }
   const [isMenuOpen, setMenuOpen] = useState(false);
   const [showModeratorBoard, setShowModeratorBoard] = useState<boolean>(false);
   const [showAdminBoard, setShowAdminBoard] = useState<boolean>(false);

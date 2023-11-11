@@ -3,9 +3,9 @@ import Header from '../layouts/Header';
 import About from '../components/About';
 import Map from '../components/Map';
 import { getPublicContent } from '../services/user-service';
-import ProperyCard from '../components/ProperyCard';
 import Contact from '../components/Contact';
 import Footer from '../layouts/Footer';
+import FilterCards from '../components/FilterCards';
 // @ts-ignore
 const Home: React.FC = () => {
    
@@ -49,7 +49,7 @@ const Home: React.FC = () => {
       {/* propery listing container */}
       <div>
        
-          <ProperyCard />
+          <FilterCards />
 
       </div>
 
@@ -60,7 +60,7 @@ const Home: React.FC = () => {
       {/* about section */}
       <div
         id="about"
-        className="flex flex-col w-full justify-center items-start h-[700px]"
+        className="flex flex-col w-full justify-center items-start h-[720px]"
         style={{
           backgroundImage: `url('https://images.unsplash.com/photo-1567018955753-472cad20a0d0?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)`,
           backgroundSize: 'cover',
@@ -69,7 +69,7 @@ const Home: React.FC = () => {
       >
         <About />
       </div>
-      <div className='h-[700px] max-w-screen-xl mx-auto'>
+      <div className='h-auto max-w-screen-xl mx-auto'>
         <Contact />
       </div>
       <div>
