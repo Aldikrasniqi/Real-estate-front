@@ -1,10 +1,12 @@
 import mFilterSvg from '../libs/images/mi_filter.svg';
-const ProperyCard: React.FC = () => {
+import PropertyCard from './PropertyCard';
+import {propertyData} from '../libs/images/data';
+const FilterCards: React.FC = () => {
   // handle active state
   // handle filter state with data
   return (
     <>
-      <div className="flex justify-between mx-auto max-w-screen-xl">
+      <div className="flex justify-between mx-auto max-w-screen-xl flex-wrap">
         <div className="flex flex-1 gap-4 m-4 ">
           <button
             className="border px-4 py-2 rounded-md text-semibold font-semibold text-sm text-[#1DAEFF]"
@@ -60,7 +62,10 @@ const ProperyCard: React.FC = () => {
           </button>
         </div>
       </div>
+      <div>
+        <PropertyCard propertyData={propertyData} />
+      </div>
     </>
   );
 };
-export default ProperyCard;
+export default FilterCards;
