@@ -1,6 +1,6 @@
 import mFilterSvg from '../libs/images/mi_filter.svg';
 import PropertyCard from './PropertyCard';
-import {propertyData} from '../libs/images/data';
+import {propertyData} from '../libs/data';
 const FilterCards: React.FC = () => {
   // handle active state
   // handle filter state with data
@@ -62,7 +62,7 @@ const FilterCards: React.FC = () => {
           </button>
         </div>
       </div>
-      <div>
+      <div className='flex flex-row flex-wrap mx-auto max-w-screen-xl justify-between'>
         <PropertyCard propertyData={propertyData} />
       </div>
     </>
