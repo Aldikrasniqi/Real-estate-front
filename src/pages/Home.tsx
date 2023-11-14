@@ -33,14 +33,18 @@ const Home: React.FC = () => {
       <div
         className="w-full h-screen"
         style={{
+          
           backgroundImage: `url('https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&q=80&w=2070&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
       >
         <Header />
-        <div className="flex flex-col w-10/12 mx-auto justify-center items-start h-[700px]">
-          <h1 className="text-7xl text-white font-bold leading-[6rem] tracking-widest">
+        <div className="flex flex-col  justify-center items-start h-full" style={{
+          background:
+          'linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, #000 100%)',
+        }}>
+          <h1 className="text-7xl text-white font-bold leading-[6rem] tracking-widest w-10/12 mx-auto">
             Find Your <span className="text-[#1DAEFF]">Dream Home</span> <br />{' '}
             with Crypto
           </h1>
