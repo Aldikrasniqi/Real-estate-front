@@ -29,7 +29,30 @@ export const propertyData = [
     bath: 2,
     area: 132.1,
     propImg: [
+      'https://images.pexels.com/photos/417344/pexels-photo-417344.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    ],
+  },
+  {
+    id: '3',
+    propType: 'Home',
+    agent: 'John Doe',
+    bedroom: 4,
+    bath: 2,
+    area: 132.1,
+    propImg: [
+      'https://images.pexels.com/photos/4237160/pexels-photo-4237160.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    ],
+  },
+  {
+    id: '3',
+    propType: 'Home',
+    agent: 'John Doe',
+    bedroom: 4,
+    bath: 2,
+    area: 132.1,
+    propImg: [
       'https://images.pexels.com/photos/10610733/pexels-photo-10610733.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     ],
   },
+  
 ];

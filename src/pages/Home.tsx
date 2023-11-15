@@ -58,7 +58,7 @@ const Home: React.FC = () => {
       </div>
 
       {/* Map Listing Neighborhood */}
-      <div>
+      <div className='h-auto max-w-screen-xl mx-auto'>
         <Map />
       </div>
       {/* about section */}
