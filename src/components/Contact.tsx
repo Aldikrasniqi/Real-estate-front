@@ -62,7 +62,7 @@ const Contact: React.FC = () => {
   };
   return (
     <>
-      <div className="flex flex-wrap items-center lg:justify-between justify-center mx-auto w-11/12 h-full mt-10">
+      <div className="flex flex-wrap items-center lg:justify-between justify-center mx-auto w-11/12 h-full mt-32 mb-14  ">
         <div className="lg:w-2/4 w-full">
           <h1 className="font-bold text-7xl">Did You Find Your </h1>
           <span className="text-[#1DAEFF] font-bold text-6xl">Dream Home?</span>

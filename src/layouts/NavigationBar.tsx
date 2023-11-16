@@ -7,7 +7,7 @@ import IUser from '../types/user.type';
 // @ts-ignore
 const Header: React.FC = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
-  const [showModeratorBoard, setShowModeratorBoard] = useState<boolean>(false);
+
   const [showAdminBoard, setShowAdminBoard] = useState<boolean>(false);
   const [currentUser, setCurrentUser] = useState<IUser | undefined>(undefined);
   useEffect(() => {
@@ -19,15 +19,13 @@ const Header: React.FC = () => {
 
     window.addEventListener('resize', handleResize);
     const user = AuthService.getCurrentUser();
-
+    
     if (user) {
       setCurrentUser(user);
-      setShowModeratorBoard(user.roles.includes('ROLE_MODERATOR'));
       setShowAdminBoard(user.roles.includes('ROLE_ADMIN'));
     }
     const logOut = () => {
       AuthService.logout();
-      setShowModeratorBoard(false);
       setShowAdminBoard(false);
       setCurrentUser(undefined);
     };
@@ -62,13 +60,6 @@ const Header: React.FC = () => {
               </div>
 
               <div className="hidden md:flex items-center space-x-1"></div>
-              {showModeratorBoard && (
-                <li className="nav-item">
-                  <Link to={'/mod'} className="nav-link">
-                    Moderator board
-                  </Link>
-                </li>
-              )}
               {showAdminBoard && (
                 <li className="nav-item">
                   <Link to={'/admin'} className="nav-link">

@@ -25,7 +25,7 @@ const PropertyCard = (props: { propertyData: Props[] }) => {
                 className="h-full rounded-t-lg object-cover object-center overflow-hidden"
               />
             ))}
-            <div className="bg-[#161616] p-4">
+            <div className="bg-[#161616] p-4 rounded-lg">
               <div className="flex flex-row justify-between">
                 <h1 className="text-[#FFFBFB] text-2xl font-semibold">{property.propType}</h1>
                 <button
@@ -42,7 +42,7 @@ const PropertyCard = (props: { propertyData: Props[] }) => {
                   View details
                 </button>
               </div>
-              <div className="flex flex-row justify-center items-center rounded pt-4 w-full">
+              <div className="flex flex-row justify-center items-center rounded-lg pt-4 w-full">
                 <span
                   className="w-1/3 text-center border rounded-l-md p-2"
                   style={{

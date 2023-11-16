@@ -46,13 +46,13 @@ const Map: React.FC = () => {
   };
   return (
     <>
-      <div className="mt-20 mb-4">
+      <div className="mt-20 mb-4 p-4">
         <h1 className="text-3xl font-semibold text-[#FF9505] p-2">
           Neighborhood
         </h1>
         <span className="p-2">Biltmore Hotel Miami Coral Gables</span>
       </div>
-      <div className="w-full mb-20">
+      <div className="mb-20 p-4">
         {!isLoaded ? (
           <h1>Loading...</h1>
         ) : (

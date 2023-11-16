@@ -20,7 +20,7 @@ const Header: React.FC = () => {
 
     window.addEventListener('resize', handleResize);
     const user = AuthService.getCurrentUser();
-
+    console.log(user)
     if (user) {
       setCurrentUser(user);
       setShowModeratorBoard(user.roles.includes('ROLE_MODERATOR'));

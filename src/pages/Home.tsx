@@ -73,7 +73,7 @@ const Home: React.FC = () => {
       >
         <About />
       </div>
-      <div className='h-auto max-w-screen-xl mx-auto'>
+      <div className='max-w-screen-xl mx-auto'>
         <Contact />
       </div>
       <div>
