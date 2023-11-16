@@ -1,16 +1,23 @@
 import React, { useEffect, useState } from 'react';
-import { Link as ScrollLink } from "react-scroll";
+import { Link as ScrollLink } from 'react-scroll';
 import { Link } from 'react-router-dom';
 import * as AuthService from '../services/auth-service';
 import IUser from '../types/user.type';
 // @ts-ignore
 const Header: React.FC = () => {
-  const param = window.location.pathname
+  const param = window.location.pathname;
   // @ts-ignore
   const [isMenuOpen, setMenuOpen] = useState(false);
   const [showModeratorBoard, setShowModeratorBoard] = useState<boolean>(false);
   const [showAdminBoard, setShowAdminBoard] = useState<boolean>(false);
   const [currentUser, setCurrentUser] = useState<IUser | undefined>(undefined);
+
+  const logOut = () => {
+    AuthService.logout();
+    setShowModeratorBoard(false);
+    setShowAdminBoard(false);
+    setCurrentUser(undefined);
+  };
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 768) {
@@ -20,18 +27,11 @@ const Header: React.FC = () => {
 
     window.addEventListener('resize', handleResize);
     const user = AuthService.getCurrentUser();
-    console.log(user)
+    console.log(user);
     if (user) {
       setCurrentUser(user);
-      setShowModeratorBoard(user.roles.includes('ROLE_MODERATOR'));
       setShowAdminBoard(user.roles.includes('ROLE_ADMIN'));
     }
-    const logOut = () => {
-      AuthService.logout();
-      setShowModeratorBoard(false);
-      setShowAdminBoard(false);
-      setCurrentUser(undefined);
-    };
 
     return () => {
       window.removeEventListener('resize', handleResize);
@@ -63,27 +63,6 @@ const Header: React.FC = () => {
               </div>
 
               <div className="hidden md:flex items-center space-x-1"></div>
-              {showModeratorBoard && (
-                <li className="nav-item">
-                  <Link to={'/mod'} className="nav-link">
-                    Moderator board
-                  </Link>
-                </li>
-              )}
-              {showAdminBoard && (
-                <li className="nav-item">
-                  <Link to={'/admin'} className="nav-link">
-                    Admin board
-                  </Link>
-                </li>
-              )}
-              {currentUser && (
-                <li className="nav-item">
-                  <Link to={'/user'} className="nav-item">
-                    User
-                  </Link>
-                </li>
-              )}
             </div>
 
             {/* {auth && auth.token ? ( */}
@@ -94,25 +73,40 @@ const Header: React.FC = () => {
                     onClick={toggleMenu}
                     className="flex items-center focus:outline-none"
                   >
-                    {/* <img
+                    <img
                       className="h-8 w-8 rounded-full"
-                      src={useri.imageUrl}
-                      alt={useri.name}
-                    /> */}
-                    test
+                      src={currentUser.image}
+                      alt={currentUser.email}
+                    />
                   </button>
                   {isMenuOpen && (
                     <div className="absolute right-0 mt-2 w-auto bg-white rounded-md shadow-lg py-2">
                       <span className="px-4 py-2 text-sm text-gray-700 font-bold">
-                        {/* {user.email} */}
-                        test@test.com
+                        {currentUser.username}
+                        {currentUser.roles}
                       </span>
 
                       <hr className="my-1 border-gray-300" />
+
                       <span className="block px-4 py-2 text-sm text-gray-700 font-bold hover:bg-gray-100 w-full text-left">
-                        <Link to="/favorites">Favorites</Link>
+                        <Link to={'/user'} className="nav-item">
+                          User
+                        </Link>
                       </span>
-                      <button className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left">
+                      {showAdminBoard && (
+                        <span className="nav-item">
+                          <Link
+                            to={'/admin'}
+                            className="block px-4 py-2 text-sm text-gray-700 font-bold hover:bg-gray-100 w-full text-left"
+                          >
+                            Admin board
+                          </Link>
+                        </span>
+                      )}
+                      <button
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left"
+                        onClick={logOut}
+                      >
                         Logout
                       </button>
                     </div>
@@ -124,20 +118,18 @@ const Header: React.FC = () => {
                 <Link
                   to="/"
                   className="py-5 px-3 text-zinc-200 hover:text-white text-base active:text-white hover:underline flex flex-col-reverse	justify-center items-center"
-                  
                 >
                   <span // if param is ' ' than make the home page active
-                  style={{ 
-                    backgroundColor: param == '/' ? '#1DAEFF' : 'transparent',
-                    width: '10px',
-                    height: '10px',
-                    display: 'block',
-                    position: 'absolute',
-                    marginTop: '33px',
-                    borderRadius: '100px'
-                  }}>
-
-                  </span>
+                    style={{
+                      backgroundColor: param == '/' ? '#1DAEFF' : 'transparent',
+                      width: '10px',
+                      height: '10px',
+                      display: 'block',
+                      position: 'absolute',
+                      marginTop: '33px',
+                      borderRadius: '100px',
+                    }}
+                  ></span>
                   Home
                 </Link>
                 <ScrollLink
@@ -194,12 +186,6 @@ const Header: React.FC = () => {
         {isMenuOpen && (
           <div className="mobile-menu md:hidden">
             <Link
-              to="/about"
-              className="block py-2 px-4 text-sm hover:bg-gray-100 text-white"
-            >
-              About
-            </Link>
-            <Link
               to="/"
               className="block py-2 px-4 text-sm hover:bg-gray-100 text-white"
             >
@@ -214,10 +200,16 @@ const Header: React.FC = () => {
             {/* {auth && auth.token ? ( */}
             {currentUser ? (
               <div>
-                <Link to={'/profile'} className="nav-link">
+                <Link
+                  to={'/profile'}
+                  className="block py-2 px-4 text-sm hover:bg-gray-100 text-white"
+                >
                   {currentUser.username}
                 </Link>
-                <button className="block py-2 px-4 text-sm hover:bg-gray-200 text-white w-full text-left">
+                <button
+                  className="block py-2 px-4 text-sm hover:bg-gray-200 text-white w-full text-left"
+                  onClick={logOut}
+                >
                   Logout
                 </button>
               </div>

@@ -9,18 +9,33 @@ export const register = (username: string, email: string, password: string) => {
   });
 };
 
-export const login = (username: string, password: string) => {
-  return axios
-    .post(API_URL + 'signin', {
-      username,
-      password,
-    })
-    .then((response) => {
-      if (response.data.accessToken) {
-        localStorage.setItem('user', JSON.stringify(response.data));
-      }
-      return response.data;
-    });
+export const  login = (username: string, password: string) => {
+  console.log(username, password);
+  const user = {
+    username,
+    password,
+    token: 'asdasdeqwwqeq31asd123',
+    islogged: true,
+    roles: ['ROLE_ADMIN'],
+    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgca89Cjk-4kMRAvPKPMYI9AZ-xs_52BWz2g&usqp=CAU'
+  };
+  console.log(user);
+  localStorage.setItem('user', JSON.stringify(user));
+  window.location.reload();
+  window.location.href = '/profile';
+  return user;
+  // return axios
+  //   .post(API_URL + 'signin', {
+  //     username,
+  //     password,
+  //   })
+  //   .then((response) => {
+  //     if (response.data.accessToken) {
+  //       localStorage.setItem('user', JSON.stringify(response.data));
+  //     }
+  //     return response.data;
+  //   });
+  
 };
 
 export const logout = () => {

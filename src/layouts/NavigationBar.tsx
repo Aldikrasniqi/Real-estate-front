@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link as ScrollLink } from "react-scroll";
+import { Link as ScrollLink } from 'react-scroll';
 
 import { Link } from 'react-router-dom';
 import * as AuthService from '../services/auth-service';
@@ -10,6 +10,12 @@ const Header: React.FC = () => {
 
   const [showAdminBoard, setShowAdminBoard] = useState<boolean>(false);
   const [currentUser, setCurrentUser] = useState<IUser | undefined>(undefined);
+  const logOut = () => {
+    AuthService.logout();
+    setShowAdminBoard(false);
+    setCurrentUser(undefined);
+  };
+
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 768) {
@@ -19,16 +25,13 @@ const Header: React.FC = () => {
 
     window.addEventListener('resize', handleResize);
     const user = AuthService.getCurrentUser();
-    
+
     if (user) {
+      // setCurrentUser(user);
+      // setShowAdminBoard(user.roles.includes('ROLE_ADMIN'));
       setCurrentUser(user);
-      setShowAdminBoard(user.roles.includes('ROLE_ADMIN'));
+      console.log(currentUser);
     }
-    const logOut = () => {
-      AuthService.logout();
-      setShowAdminBoard(false);
-      setCurrentUser(undefined);
-    };
 
     return () => {
       window.removeEventListener('resize', handleResize);
@@ -67,13 +70,6 @@ const Header: React.FC = () => {
                   </Link>
                 </li>
               )}
-              {currentUser && (
-                <li className="nav-item">
-                  <Link to={'/user'} className="nav-item">
-                    User
-                  </Link>
-                </li>
-              )}
             </div>
 
             {/* {auth && auth.token ? ( */}
@@ -84,25 +80,27 @@ const Header: React.FC = () => {
                     onClick={toggleMenu}
                     className="flex items-center focus:outline-none"
                   >
-                    {/* <img
+                    <img
                       className="h-8 w-8 rounded-full"
-                      src={useri.imageUrl}
-                      alt={useri.name}
-                    /> */}
-                    test
+                      src={currentUser.image}
+                    />
                   </button>
                   {isMenuOpen && (
                     <div className="absolute right-0 mt-2 w-auto bg-white rounded-md shadow-lg py-2">
                       <span className="px-4 py-2 text-sm text-gray-700 font-bold">
-                        {/* {user.email} */}
-                        test@test.com
+                        {currentUser.username}
                       </span>
 
                       <hr className="my-1 border-gray-300" />
                       <span className="block px-4 py-2 text-sm text-gray-700 font-bold hover:bg-gray-100 w-full text-left">
-                        <Link to="/favorites">Favorites</Link>
+                        <Link to={'/user'} className="nav-item">
+                          User
+                        </Link>
                       </span>
-                      <button className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left">
+                      <button
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left"
+                        onClick={logOut}
+                      >
                         Logout
                       </button>
                     </div>
@@ -117,7 +115,7 @@ const Header: React.FC = () => {
                 >
                   Home
                 </Link>
-                
+
                 <Link
                   to="/developers"
                   className="py-5 px-3 text-zinc-200 hover:text-white text-base active:text-white hover:underline"
@@ -167,16 +165,7 @@ const Header: React.FC = () => {
             >
               Home
             </Link>
-            <ScrollLink
-              to="about" 
-              spy={true}
-              smooth={true}
-              offset={-70} 
-              duration={500}
-              className="py-5 px-3 text-zinc-200 hover:text-white text-base active:text-white hover:underline cursor-pointer"
-            >
-              About Us
-            </ScrollLink>
+          
             <Link
               to="/developers"
               className="block py-2 px-4 text-sm hover:bg-gray-100 text-white"
@@ -186,10 +175,13 @@ const Header: React.FC = () => {
             {/* {auth && auth.token ? ( */}
             {currentUser ? (
               <div>
-                <Link to={'/profile'} className="nav-link">
+                <Link to={'/profile'}  className="block py-2 px-4 text-sm hover:bg-gray-200 text-white w-full text-left">
                   {currentUser.username}
                 </Link>
-                <button className="block py-2 px-4 text-sm hover:bg-gray-200 text-white w-full text-left">
+                <button
+                  className="block py-2 px-4 text-sm hover:bg-gray-200 text-white w-full text-left"
+                  onClick={logOut}
+                >
                   Logout
                 </button>
               </div>

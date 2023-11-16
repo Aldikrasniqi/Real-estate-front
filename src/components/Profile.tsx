@@ -6,16 +6,10 @@ const Profile: React.FC = () => {
 
   return (
     <div className="container">
-      <h3>{currentUser.username} Profile</h3>
+      <h3>{currentUser.username}'s Profile</h3>
 
       <header>
-        <p>
-          <strong>Token:</strong> {currentUser.accessToken.substring(0, 20)} ...{' '}
-          {currentUser.accessToken.substr(currentUser.accessToken.length - 20)}
-        </p>
-        <p>
-          <strong>Id:</strong> {currentUser.id}
-        </p>
+    
         <p>
           <strong>Email:</strong> {currentUser.email}
         </p>

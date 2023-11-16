@@ -30,24 +30,24 @@ const Login: React.FC<LoginProps> = () => {
 
   const handleLogin = (formValue: { username: string; password: string }) => {
     const { username, password } = formValue;
-
+    console.log(username, password);
     setMessage('');
     setLoading(true);
-
-    login(username, password).then(
-      () => {
-        navigate('/profile');
-        window.location.reload();
-      },
-      (err) => {
-        const resMessage =
-          (err.response && err.response.data && err.response.data.message) ||
-          err.message ||
-          err.toString();
-        setLoading(false);
-        setMessage(resMessage);
-      }
-    );
+    login(username, password)
+      // login(username, password).then(
+      //   () => {
+      //     navigate('/profile');
+      //     window.location.reload();
+      //   },
+      //   (err) => {
+      //     const resMessage =
+      //       (err.response && err.response.data && err.response.data.message) ||
+      //       err.message ||
+      //       err.toString();
+      //     setLoading(false);
+      //     setMessage(resMessage);
+      //   }
+      // );
   };
   // @ts-ignore
   return (
