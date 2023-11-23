@@ -27,8 +27,7 @@ const Header: React.FC = () => {
     const user = AuthService.getCurrentUser();
 
     if (user) {
-      // setCurrentUser(user);
-      // setShowAdminBoard(user.roles.includes('ROLE_ADMIN'));
+      setShowAdminBoard(user.roles.includes('ROLE_ADMIN'));
       setCurrentUser(user);
       console.log(currentUser);
     }
@@ -61,15 +60,6 @@ const Header: React.FC = () => {
                   <span className="font-bold text-2xl">cryproVerse</span>
                 </Link>
               </div>
-
-              <div className="hidden md:flex items-center space-x-1"></div>
-              {showAdminBoard && (
-                <li className="nav-item">
-                  <Link to={'/admin'} className="nav-link">
-                    Admin board
-                  </Link>
-                </li>
-              )}
             </div>
 
             {/* {auth && auth.token ? ( */}
@@ -89,14 +79,26 @@ const Header: React.FC = () => {
                     <div className="absolute right-0 mt-2 w-auto bg-white rounded-md shadow-lg py-2">
                       <span className="px-4 py-2 text-sm text-gray-700 font-bold">
                         {currentUser.username}
+                        {currentUser.roles}
                       </span>
 
                       <hr className="my-1 border-gray-300" />
+
                       <span className="block px-4 py-2 text-sm text-gray-700 font-bold hover:bg-gray-100 w-full text-left">
                         <Link to={'/user'} className="nav-item">
                           User
                         </Link>
                       </span>
+                      {showAdminBoard && (
+                        <span className="nav-item">
+                          <Link
+                            to={'/admin'}
+                            className="block px-4 py-2 text-sm text-gray-700 font-bold hover:bg-gray-100 w-full text-left"
+                          >
+                            Admin board
+                          </Link>
+                        </span>
+                      )}
                       <button
                         className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left"
                         onClick={logOut}
@@ -165,7 +167,7 @@ const Header: React.FC = () => {
             >
               Home
             </Link>
-          
+
             <Link
               to="/developers"
               className="block py-2 px-4 text-sm hover:bg-gray-100 text-white"
@@ -175,7 +177,10 @@ const Header: React.FC = () => {
             {/* {auth && auth.token ? ( */}
             {currentUser ? (
               <div>
-                <Link to={'/profile'}  className="block py-2 px-4 text-sm hover:bg-gray-200 text-white w-full text-left">
+                <Link
+                  to={'/profile'}
+                  className="block py-2 px-4 text-sm hover:bg-gray-200 text-white w-full text-left"
+                >
                   {currentUser.username}
                 </Link>
                 <button
