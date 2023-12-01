@@ -9,22 +9,22 @@ const BoardAdmin: React.FC = () => {
   const [message, setMessage] = useState<string>('');
   const initialValues: {
     property: string;
-    badrooms: string;
-    bathrooms: string;
+    badrooms: number;
+    bathrooms: number;
     description: string;
-    surface: string;
-    price: string;
-    langtitude: string;
-    longtitude: string;
+    surface: number;
+    price: number;
+    langtitude: number;
+    longtitude: number;
   } = {
     property: '',
-    badrooms: '',
-    bathrooms: '',
+    badrooms: Number(''),
+    bathrooms: Number(''),
     description: '',
-    surface: '',
-    price: '',
-    langtitude: '',
-    longtitude: '',
+    surface: Number(''),
+    price: Number(''),
+    langtitude: Number(''),
+    longtitude: Number(''),
   };
   const authUser = JSON.parse(localStorage.getItem('user') || '{}');
   const isAdmin =
@@ -42,13 +42,13 @@ const BoardAdmin: React.FC = () => {
 
   const handleSubmit = (formValue: {
     property: string;
-    badrooms: string;
-    bathrooms: string;
+    badrooms: number;
+    bathrooms: number;
     description: string;
-    surface: string;
-    price: string;
-    langtitude: string;
-    longtitude: string;
+    surface: number;
+    price: number;
+    langtitude: number;
+    longtitude: number;
   }) => {
     const {
       property,
@@ -75,17 +75,17 @@ const BoardAdmin: React.FC = () => {
       longtitude
     ).then(
       () => {
-        console.log('success');
+        console.log(formValue);
         setLoading(false);
         setMessage('Property added successfully!');
         formValue.property = '';
-        formValue.badrooms = '';
-        formValue.bathrooms = '';
+        formValue.badrooms = 0;
+        formValue.bathrooms = 0;
         formValue.description = '';
-        formValue.surface = '';
-        formValue.price = '';
-        formValue.langtitude = '';
-        formValue.longtitude = '';
+        formValue.surface = Number('');
+        formValue.price = 0;
+        formValue.langtitude = 0;
+        formValue.longtitude = 0;
       },
       (err) => {
         const resMessage =
@@ -291,16 +291,17 @@ const BoardAdmin: React.FC = () => {
                     <span>Login</span>
                   </button>
                 </div>
-                </Form>
-              </Formik>
-            </div>
             {message && (
-              <div className="form-group">
-                <div className="alert alert-danger" role="alert">
+              <div className="form-group mt-4">
+                <div className="text-green-700" role="alert">
                   {message}
+                  
                 </div>
               </div>
             )}
+                </Form>
+              </Formik>
+            </div>
           </section>
           <p>{content}</p>
         </>

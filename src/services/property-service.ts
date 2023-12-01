@@ -3,19 +3,30 @@ import axios from 'axios';
 
 export const createProperty = (
   property: string,
-  badrooms: string,
-  bathrooms: string,
+  badrooms: number,
+  bathrooms: number,
   description: string,
-  surface: string,
-  price: string,
-  langtitude: string,
-  longtitude: string
+  surface: number,
+  price: number,
+  langtitude: number,
+  longtitude: number
 ) => {
-    console.log(property);
-    return axios.post(API_URL + 'property', {}).then((response) => {
-        console.log(response.data);
-        return response.data;
-    }).catch((error) => {
-        console.log(error);
+  return axios
+    .post(API_URL + 'property', {
+      property,
+      badrooms,
+      bathrooms,
+      description,
+      surface,
+      price,
+      langtitude,
+      longtitude,
+    })
+    .then((response) => {
+      console.log(response.data);
+      return response.data;
+    })
+    .catch((error) => {
+      console.log(error);
     });
 };
