@@ -1,6 +1,6 @@
 export const propertyData = [
   {
-    id: '1',
+    id: 1,
     propType: 'Apartment',
     agent: 'John Doe',
     bedroom: 2,
@@ -11,7 +11,7 @@ export const propertyData = [
     ],
   },
   {
-    id: '2',
+    id: 2,
     propType: 'Home',
     agent: 'Jane Doe',
     bedroom: 22,
@@ -22,7 +22,7 @@ export const propertyData = [
     ],
   },
   {
-    id: '3',
+    id: 3,
     propType: 'Home',
     agent: 'John Doe',
     bedroom: 4,
@@ -33,7 +33,7 @@ export const propertyData = [
     ],
   },
   {
-    id: '3',
+    id: 4,
     propType: 'Home',
     agent: 'John Doe',
     bedroom: 4,
@@ -44,7 +44,7 @@ export const propertyData = [
     ],
   },
   {
-    id: '3',
+    id: 5,
     propType: 'Home',
     agent: 'John Doe',
     bedroom: 4,

@@ -5,6 +5,7 @@ import { Routes, Route, Link } from 'react-router-dom';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Home from './pages/Home';
+import PropertyDetail from './pages/PropertyDetail';
 import Developers from './pages/Developers';
 import Profile from './components/Profile';
 import BoardUser from './components/BoardUser';
@@ -34,6 +35,7 @@ const App: React.FC = () => {
                 <Route path="/user" element={<BoardUser />} />
                 <Route path="/mod" element={<BoardModerator />} />
                 <Route path="/admin" element={<BoardAdmin />} />
+                <Route path="property/:id" element={<PropertyDetail />} />
               </Routes>
             </>
           }

@@ -7,9 +7,7 @@ const Profile: React.FC = () => {
   return (
     <div className="container">
       <h3>{currentUser.username}'s Profile</h3>
-
       <header>
-    
         <p>
           <strong>Email:</strong> {currentUser.email}
         </p>

@@ -10,7 +10,6 @@ export const register = (username: string, email: string, password: string) => {
 };
 
 export const  login = (username: string, password: string) => {
-  console.log(username, password);
   const user = {
     username,
     password,

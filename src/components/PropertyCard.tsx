@@ -1,15 +1,6 @@
 import React from 'react';
-import { Button } from 'react-scroll';
-
-type Props = {
-  id: string;
-  propType: string;
-  bedroom: number;
-  bath: number;
-  area: number;
-  propImg: string[];
-};
-
+import Props from '../types/propertyTypes';
+import { Link } from 'react-router-dom';
 const PropertyCard = (props: { propertyData: Props[] }) => {
   return (
     <>
@@ -28,19 +19,20 @@ const PropertyCard = (props: { propertyData: Props[] }) => {
             <div className="bg-[#161616] p-4 rounded-lg">
               <div className="flex flex-row justify-between">
                 <h1 className="text-[#FFFBFB] text-2xl font-semibold">{property.propType}</h1>
-                <button
+                <Link
+                  to={`/property/${property.id}`}
                   style={{
                     borderRadius: '0.5rem',
                     background: 'linear-gradient(90deg, #FEAC6D 0%, #AE61ED 100%)',
                     boxShadow: '0px 17px 33px 0px rgba(255, 255, 255, 0.20)',
-                    padding: '0.5rem 1rem', // Adjust padding as needed
-                    color: '#FFF', // Text color
-                    border: 'none', // Remove default button border
-                    cursor: 'pointer', // Add pointer cursor on hover
+                    padding: '0.5rem 1rem', 
+                    color: '#FFF', 
+                    border: 'none', 
+                    cursor: 'pointer', 
                   }}
                 >
                   View details
-                </button>
+                </Link>
               </div>
               <div className="flex flex-row justify-center items-center rounded-lg pt-4 w-full">
                 <span
