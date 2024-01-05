@@ -60,8 +60,7 @@ const BoardAdmin: React.FC = () => {
       langtitude,
       longtitude,
     } = formValue;
-    
-  
+
     setMessage('Property added successfully!');
     setLoading(true);
     createProperty(
@@ -97,7 +96,7 @@ const BoardAdmin: React.FC = () => {
       }
     );
   };
-  
+
   useEffect(() => {
     if (isAdmin) {
       getAdminBoard().then(
@@ -280,25 +279,24 @@ const BoardAdmin: React.FC = () => {
                     </div>
                   </div>
                   <div>
-                  <button
-                    type="submit"
-                    className="py-2 px-4 bg-[#1DAEFF] text-white font-medium hover:text-white mt-4 rounded-lg transition duration-300"
-                    style={{ boxShadow: '0px 4px 40px 0px #1DAEFF' }}
-                  >
-                    {loading && (
-                      <span className="spinner-border spinner-border-sm"></span>
-                    )}
-                    <span>Login</span>
-                  </button>
-                </div>
-            {message && (
-              <div className="form-group mt-4">
-                <div className="text-green-700" role="alert">
-                  {message}
-                  
-                </div>
-              </div>
-            )}
+                    <button
+                      type="submit"
+                      className="py-2 px-4 bg-[#1DAEFF] text-white font-medium hover:text-white mt-4 rounded-lg transition duration-300"
+                      style={{ boxShadow: '0px 4px 40px 0px #1DAEFF' }}
+                    >
+                      {loading && (
+                        <span className="spinner-border spinner-border-sm"></span>
+                      )}
+                      <span>Login</span>
+                    </button>
+                  </div>
+                  {message && (
+                    <div className="form-group mt-4">
+                      <div className="text-green-700" role="alert">
+                        {message}
+                      </div>
+                    </div>
+                  )}
                 </Form>
               </Formik>
             </div>

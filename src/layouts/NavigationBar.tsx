@@ -53,7 +53,7 @@ const Header: React.FC = () => {
                   className="flex items-center py-5 px-2 text-white hover:text-gray-300"
                 >
                   <img
-                    src="https://www.cryptoverse.vip/brand@2x.png"
+                    src="https://www.coinhustle.com/content/images/2023/05/Coinhustle-logo-icon-500x500.png "
                     className="h-10 mr-3"
                     alt="FlowBite Logo"
                   />
