@@ -3,7 +3,7 @@
 const Footer = () => {
   return (
     <footer
-      className="  mt-auto sticky bottom w-screen"
+      className=" mt-auto sticky bottom w-screen mx-auto"
       // style={{ position: 'fixed', left: 0, bottom: 0, width: '100%' }}
     >
       <div className="mt-auto mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
@@ -11,7 +11,7 @@ const Footer = () => {
           <div className="mb-6 md:mb-0 flex flex-col gap-3 lg:w-1/2 md:w-1/2">
             <a href="/" className="flex items-center">
               <img
-                src="https://www.cryptoverse.vip/brand@2x.png"
+                src="https://www.coinhustle.com/content/images/2023/05/Coinhustle-logo-icon-500x500.png"
                 className="h-8 mr-3"
                 alt="FlowBite Logo"
               />

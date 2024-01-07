@@ -8,7 +8,6 @@ import Footer from '../layouts/Footer';
 import FilterCards from '../components/FilterCards';
 // @ts-ignore
 const Home: React.FC = () => {
-   
   const [content, setContent] = useState<string>('');
 
   useEffect(() => {
@@ -28,22 +27,24 @@ const Home: React.FC = () => {
   }, []);
 
   return (
-    <div className='bg-[#000] text-white'>
+    <div className="bg-[#000] text-white">
       {/* welcome header */}
       <div
         className="w-full h-screen"
         style={{
-          
           backgroundImage: `url('https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&q=80&w=2070&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
       >
         <Header />
-        <div className="flex flex-col  justify-center items-start h-full" style={{
-          background:
-          'linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, #000 100%)',
-        }}>
+        <div
+          className="flex flex-col  justify-center items-start h-full"
+          style={{
+            background:
+              'linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, #000 100%)',
+          }}
+        >
           <h1 className="text-7xl text-white font-bold leading-[6rem] tracking-widest w-10/12 mx-auto">
             Find Your <span className="text-[#1DAEFF]">Dream Home</span> <br />{' '}
             with Crypto
@@ -52,14 +53,15 @@ const Home: React.FC = () => {
       </div>
       {/* propery listing container */}
       <div>
-       
-          <FilterCards />
-
+        <FilterCards />
       </div>
 
       {/* Map Listing Neighborhood */}
-      <div className='h-auto max-w-screen-xl mx-auto'>
-        <Map />
+      <div className="h-auto max-w-screen-xl mx-auto">
+        <Map
+          title="Neighborhood"
+          subtitle="Biltmore Hotel Miami Coral Gables"
+        />
       </div>
       {/* about section */}
       <div
@@ -73,12 +75,12 @@ const Home: React.FC = () => {
       >
         <About />
       </div>
-      <div className='max-w-screen-xl mx-auto'>
+      <div className="max-w-screen-xl mx-auto">
         <Contact />
       </div>
       <div>
         {/* footer */}
-        <Footer/>
+        <Footer />
       </div>
     </div>
   );

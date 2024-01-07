@@ -121,7 +121,6 @@ const BoardAdmin: React.FC = () => {
     <div>
       {isAdmin ? (
         <>
-          <h2>Admin Board</h2>
           <section className="bg-white dark:bg-gray-900">
             <div className="py-8 px-4 mx-auto max-w-2xl lg:py-16">
               <h2 className="mb-4 text-xl font-bold text-gray-900 dark:text-white">
@@ -301,7 +300,6 @@ const BoardAdmin: React.FC = () => {
               </Formik>
             </div>
           </section>
-          <p>{content}</p>
         </>
       ) : (
         <p>You do not have the necessary permissions for the Admin Board.</p>

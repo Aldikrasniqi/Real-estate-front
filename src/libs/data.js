@@ -36,7 +36,7 @@ export const propertyData = [
     id: 4,
     propType: 'Home',
     agent: 'John Doe',
-    bedroom: 4,
+    bedroom: 1,
     bath: 2,
     area: 132.1,
     propImg: [
@@ -54,5 +54,26 @@ export const propertyData = [
       'https://images.pexels.com/photos/10610733/pexels-photo-10610733.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     ],
   },
-  
+  {
+    id: 6,
+    propType: 'Music Studio',
+    agent: 'John Doe',
+    bedroom: 0,
+    bath: 1,
+    area: 132.1,
+    propImg: [
+      'https://images.pexels.com/photos/8197347/pexels-photo-8197347.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    ],
+  },
+  {
+    id: 7,
+    propType: 'Art Studio',
+    agent: 'John Doe',
+    bedroom: 0,
+    bath: 1,
+    area: 132.1,
+    propImg: [
+      'https://images.pexels.com/photos/989917/pexels-photo-989917.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+    ],
+  }
 ];

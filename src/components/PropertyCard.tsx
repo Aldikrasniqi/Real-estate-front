@@ -1,7 +1,11 @@
 import React from 'react';
 import Props from '../types/propertyTypes';
 import { Link } from 'react-router-dom';
+import { usePropertyContext } from '../context/context.store';
 const PropertyCard = (props: { propertyData: Props[] }) => {
+  const property = usePropertyContext();
+  console.log(property.listings)
+  console.log(props.propertyData)
   return (
     <>
         {props.propertyData.map((property, index) => (

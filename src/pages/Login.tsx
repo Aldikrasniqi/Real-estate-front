@@ -60,7 +60,7 @@ const Login: React.FC<LoginProps> = () => {
           >
             <img
               className="w-15 h-12 mr-2"
-              src="https://www.cryptoverse.vip/brand@2x.png"
+              src="https://www.coinhustle.com/content/images/2023/05/Coinhustle-logo-icon-500x500.png"
               alt="logo"
             />
             cryproVerse

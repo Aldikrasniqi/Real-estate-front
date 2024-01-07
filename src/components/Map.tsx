@@ -6,8 +6,14 @@ import {
 } from '@react-google-maps/api';
 import { useState } from 'react';
 // import { useMemo } from 'react';
+interface MapProps {
+  title: string;
+  subtitle: string;
+}
 // @ts-nocheck
-const Map: React.FC = () => {
+const Map: React.FC<MapProps> = ({
+  title, subtitle
+}) => {
   const { isLoaded } = useLoadScript({
     // @ts-ignore
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY,
@@ -48,9 +54,11 @@ const Map: React.FC = () => {
     <>
       <div className="mt-20 mb-4 p-4">
         <h1 className="text-3xl font-semibold text-[#FF9505] p-2">
-          Neighborhood
+          {title}
         </h1>
-        <span className="p-2">Biltmore Hotel Miami Coral Gables</span>
+        <span className="p-2">
+          {subtitle}
+        </span>
       </div>
       <div className="mb-20 p-4">
         {!isLoaded ? (

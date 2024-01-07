@@ -12,38 +12,36 @@ import BoardUser from './components/BoardUser';
 import BoardModerator from './components/BoardModerator';
 import BoardAdmin from './components/BoardAdmin';
 import NavigationBar from './layouts/NavigationBar';
-
+import { PropertyProvider } from './context/context.store';
 // import EventBus from "./common/EventBus";
 const App: React.FC = () => {
   return (
     <>
-      <Routes>
-        <Route
-          path="/"
-          element={<Home />}
-        />
-        <Route
-          path="/*"
-          element={
-            <>
-              <NavigationBar />
-              <Routes>
-                <Route path="/login" element={<Login />} />
-                <Route path="/developers" element={<Developers />} />
-                <Route path="/register" element={<Register />} />
-                <Route path="/profile" element={<Profile />} />
-                <Route path="/user" element={<BoardUser />} />
-                <Route path="/mod" element={<BoardModerator />} />
-                <Route path="/admin" element={<BoardAdmin />} />
-                <Route path="property/:id" element={<PropertyDetail />} />
-              </Routes>
-            </>
-          }
-        />
-      </Routes>
+      <PropertyProvider>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route
+            path="/*"
+            element={
+              <>
+                <NavigationBar />
+                <Routes>
+                  <Route path="/login" element={<Login />} />
+                  <Route path="/developers" element={<Developers />} />
+                  <Route path="/register" element={<Register />} />
+                  <Route path="/profile" element={<Profile />} />
+                  <Route path="/user" element={<BoardUser />} />
+                  <Route path="/mod" element={<BoardModerator />} />
+                  <Route path="/admin" element={<BoardAdmin />} />
+                  <Route path="property/:id" element={<PropertyDetail />} />
+                </Routes>
+              </>
+            }
+          />
+        </Routes>
+      </PropertyProvider>
     </>
   );
 };
-
 
 export default App;

@@ -3,6 +3,7 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import { propertyData } from '../libs/data';
 import PropertyDetailCard from '../components/PropertyDetailCard';
+import Footer from '../layouts/Footer';
 const PropertyDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const idToNumber = Number(id);
@@ -44,6 +45,7 @@ const PropertyDetail: React.FC = () => {
           </div>        
         </div>
       </div>
+      <Footer />
     </div>
   );
 };
