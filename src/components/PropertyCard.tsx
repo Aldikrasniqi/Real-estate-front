@@ -2,6 +2,8 @@ import React from 'react';
 import Props from '../types/propertyTypes';
 import { Link } from 'react-router-dom';
 import { usePropertyContext } from '../context/context.store';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronCircleDown } from '@fortawesome/free-solid-svg-icons';
 
 const PropertyCard = (props: { propertyData: Props[] }) => {
   const property = usePropertyContext();
@@ -24,7 +26,10 @@ const PropertyCard = (props: { propertyData: Props[] }) => {
   return (
     <>
       {currentCardsSlice.map((property, index) => (
-        <div key={index} className="flex flex-col lg:w-1/2 p-4 h-[530px] rounded-lg overflow-hidden">
+        <div
+          key={index}
+          className="flex flex-col lg:w-1/2 p-4 h-[530px] rounded-lg overflow-hidden"
+        >
           {property.propImg.map((img, imgIndex) => (
             <img
               key={imgIndex}
@@ -35,12 +40,15 @@ const PropertyCard = (props: { propertyData: Props[] }) => {
           ))}
           <div className="bg-[#161616] p-4 rounded-lg">
             <div className="flex flex-row justify-between">
-              <h1 className="text-[#FFFBFB] text-2xl font-semibold">{property.propType}</h1>
+              <h1 className="text-[#FFFBFB] text-2xl font-semibold">
+                {property.propType}
+              </h1>
               <Link
                 to={`/property/${property.id}`}
                 style={{
                   borderRadius: '0.5rem',
-                  background: 'linear-gradient(90deg, #FEAC6D 0%, #AE61ED 100%)',
+                  background:
+                    'linear-gradient(90deg, #FEAC6D 0%, #AE61ED 100%)',
                   boxShadow: '0px 17px 33px 0px rgba(255, 255, 255, 0.20)',
                   padding: '0.5rem 1rem',
                   color: '#FFF',
@@ -92,14 +100,19 @@ const PropertyCard = (props: { propertyData: Props[] }) => {
         </div>
       ))}
       {allCards.length > lastIndex && (
-        <div className="text-center mt-4">
-          <button
-            className="bg-blue-500 text-white px-4 py-2 rounded-md"
-            onClick={handleShowMore}
-            disabled={loading}
-          >
-            {loading ? 'Loading...' : 'Show More'}
-          </button>
+        <div className="flex justify-between mx-auto max-w-screen-xl flex-wrap mt-6">
+          <div className="flex flex-col items-center">
+            <FontAwesomeIcon
+              icon={faChevronCircleDown}
+              className="text-4xl text-[#A6A3A3] bg-black cursor-pointer rounded-full"
+              onClick={handleShowMore}
+            />
+            <span className="rounded-full "></span>
+
+            <span className="text-[#fffbfbe3] text-sm font-medium mt-1">
+              {loading ? 'Loading...' : 'View More'}
+            </span>
+          </div>
         </div>
       )}
     </>

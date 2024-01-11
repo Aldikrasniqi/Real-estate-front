@@ -214,7 +214,7 @@ function PropertyDetailCard(propertyDetail: any) {
         <h1 className='text-[#1DAEFF] font-medium text-xl mb-2'>Property Map </h1>
         <Map title='Kosova' subtitle='Testing' />
       </div>
-      
+          
     </div>
    </>
   );
