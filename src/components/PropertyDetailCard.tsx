@@ -1,11 +1,12 @@
 import Footer from '../layouts/Footer';
 import React from 'react';
 import Map from './Map';
+import FramerDrag from './Framer-Drager';
 
 function PropertyDetailCard(propertyDetail: any) {
   return (
    <>
-     <div className="lg:w-[1000px] w-auto">
+     <div className="lg:w-[1000px] w-auto p-6">
       <img
         src={propertyDetail.props.propImg[0]}
         alt=""
@@ -75,8 +76,8 @@ function PropertyDetailCard(propertyDetail: any) {
             fill="none"
           >
             <path
-              fill-rule="evenodd"
-              clip-rule="evenodd"
+              fillRule="evenodd"
+              clipRule="evenodd"
               d="M15.3331 9.33335C15.5176 9.33468 15.6933 9.41183 15.8191 9.54668C15.9453 9.67886 16.0108 9.85761 15.9998 10.04C15.7995 13.3874 13.0266 15.9997 9.67315 16H6.32648C2.97306 15.9997 0.200142 13.3874 -0.000188023 10.04C-0.00897117 9.85806 0.0559115 9.68023 0.179812 9.54668C0.304733 9.41018 0.481445 9.33272 0.666479 9.33335H3.07848C3.22547 9.33473 3.35601 9.23967 3.39981 9.09935C3.57391 8.54572 4.08613 8.1683 4.66648 8.16601H8.00315C8.5835 8.1683 9.09571 8.54572 9.26981 9.09935C9.31325 9.23849 9.44205 9.33327 9.58781 9.33335H13.1658C13.3499 9.33335 13.4991 9.18411 13.4991 9.00001V2.00001C13.4999 1.73655 13.3454 1.49736 13.105 1.38968C12.8645 1.282 12.5832 1.32602 12.3871 1.50201L12.1138 1.77535C12.0249 1.86493 11.9942 1.99706 12.0345 2.11668C12.2669 2.80327 12.0905 3.56229 11.5791 4.07601L11.4458 4.21268C11.1855 4.47294 10.7635 4.47294 10.5031 4.21268L8.73981 2.44868C8.47956 2.18835 8.47956 1.76635 8.73981 1.50601L8.87648 1.36935C9.3963 0.872756 10.1468 0.701707 10.8305 0.924014C10.9492 0.96174 11.0791 0.930112 11.1671 0.842014L11.4758 0.533348C12.0591 -0.00563735 12.906 -0.148438 13.6338 0.169491C14.3616 0.487419 14.8323 1.20583 14.8331 2.00001V9.00001C14.8331 9.18411 14.9824 9.33335 15.1665 9.33335H15.3331ZM7.66648 13.5C7.85057 13.5 7.99981 13.3508 7.99981 13.1667V9.83335C7.99981 9.64925 7.85057 9.50001 7.66648 9.50001H4.99981C4.81572 9.50001 4.66648 9.64925 4.66648 9.83335V13.1667C4.66648 13.3508 4.81572 13.5 4.99981 13.5H7.66648Z"
               fill="white"
             />
@@ -127,8 +128,8 @@ function PropertyDetailCard(propertyDetail: any) {
               fill="white"
             />
             <path
-              fill-rule="evenodd"
-              clip-rule="evenodd"
+              fillRule="evenodd"
+              clipRule="evenodd"
               d="M15.3333 14.0833C15.7015 14.0833 16 14.3818 16 14.75C16 15.1182 15.7015 15.4166 15.3333 15.4166H0.666667C0.298477 15.4166 0 15.1182 0 14.75C0 14.3818 0.298477 14.0833 0.666667 14.0833H1C1.18409 14.0833 1.33333 13.9341 1.33333 13.75V6.91665C1.33333 6.73255 1.48257 6.58331 1.66667 6.58331H14.3333C14.5174 6.58331 14.6667 6.73255 14.6667 6.91665V13.75C14.6667 13.9341 14.8159 14.0833 15 14.0833H15.3333ZM4 8.24998C3.63181 8.24998 3.33333 8.54846 3.33333 8.91665V13.75C3.33333 13.9341 3.48257 14.0833 3.66667 14.0833H12.6667C12.8508 14.0833 13 13.9341 13 13.75V8.91665C13 8.54846 12.7015 8.24998 12.3333 8.24998H4Z"
               fill="white"
             />
@@ -189,7 +190,7 @@ function PropertyDetailCard(propertyDetail: any) {
           {propertyDetail.props.area} sq ft
         </span>
       </div>
-      <div className="mt-20">
+      <div className="mt-10 p-6">
         <h1 className='text-[#1DAEFF] font-medium text-xl mb-2'>Description</h1>
         <p style={{ color: 'rgba(255, 251, 251, 0.75)' }} className='font-normal leading-7 mb-10 text-md'>
           Enchanting three bedroom, three bath home with spacious one bedroom,
@@ -202,19 +203,20 @@ function PropertyDetailCard(propertyDetail: any) {
           patio, wet bar and grill. Enchanting three bedroom,
         </p>
       </div>
-      <div className="mt-20 mb-20">
+      <div className="mt-10 mb-20 p-6">
         <h1 className='text-[#1DAEFF] font-medium text-xl mb-2'>Property Video</h1>
         <img
         src={propertyDetail.props.propImg[0]}
         alt=""
-        style={{ width: '100%', height: '400px', borderRadius: '0.625rem' }}
-      />
+        style={{ width: '100%', height: '400px', borderRadius: '0.625rem', }}
+        />
       </div>
       <div className="mt-20 mb-20">
-        <h1 className='text-[#1DAEFF] font-medium text-xl mb-2'>Property Map </h1>
         <Map title='Kosova' subtitle='Testing' />
       </div>
+
           
+      
     </div>
    </>
   );

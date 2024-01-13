@@ -6,6 +6,7 @@ import { getPublicContent } from '../services/user-service';
 import Contact from '../components/Contact';
 import Footer from '../layouts/Footer';
 import FilterCards from '../components/FilterCards';
+import FramerDrag from '../components/Framer-Drager';
 // @ts-ignore
 const Home: React.FC = () => {
   const [content, setContent] = useState<string>('');
@@ -58,6 +59,7 @@ const Home: React.FC = () => {
 
       {/* Map Listing Neighborhood */}
       <div className="h-auto max-w-screen-xl mx-auto">
+        
         <Map
           title="Neighborhood"
           subtitle="Biltmore Hotel Miami Coral Gables"
@@ -74,6 +76,9 @@ const Home: React.FC = () => {
         }}
       >
         <About />
+      </div>
+      <div className="max-w-screen-xl mx-auto">
+        <FramerDrag />
       </div>
       <div className="max-w-screen-xl mx-auto">
         <Contact />
