@@ -14,8 +14,8 @@ const PropertyDetail: React.FC = () => {
     <div className="bg-black text-white">
       <div className="flex max-w-screen-xl flex-row justify-between mx-auto items-start pt-20 flex-wrap">
         <PropertyDetailCard props={propertyDetail} />
-        <SimilarListings />
         <div className="lg:w-[200px] w-auto">
+        
           <div className="flex flex-col items-center justify-center">
             <img
               className="w-28 h-28 rounded-full"
@@ -46,6 +46,9 @@ const PropertyDetail: React.FC = () => {
             </button>
           </div>        
         </div>
+      </div>
+      <div className='max-w-screen-xl mx-auto mb-28'>
+      <SimilarListings />
       </div>
       <Footer />
     </div>
