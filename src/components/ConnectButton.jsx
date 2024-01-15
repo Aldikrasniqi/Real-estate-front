@@ -14,7 +14,7 @@ const ConnectButton = () => {
         });
         const connectedAddress = accounts[0];
         setAddress(connectedAddress);
-
+        localStorage.setItem('address', connectedAddress);
         const provider = new ethers.providers.Web3Provider(window.ethereum);
         const signer = provider.getSigner();
         const connectedAccount = await signer.getAddress();
@@ -52,7 +52,7 @@ const ConnectButton = () => {
           {accountDetails && (
             <div>
               <p>Connected Account: {accountDetails.address}</p>
-              
+
             </div>
           )}
         </>

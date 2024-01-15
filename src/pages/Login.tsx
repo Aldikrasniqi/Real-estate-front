@@ -16,38 +16,37 @@ const Login: React.FC<LoginProps> = () => {
   const [message, setMessage] = useState<string>('');
   // @ts-nocheck
   const initialValues: {
-    username: string;
+    email: string;
     password: string;
   } = {
-    username: '',
+    email: '',
     password: '',
   };
 
   const validationSchema = Yup.object().shape({
-    username: Yup.string().required('Username is required'),
+    email: Yup.string().required('email is required'),
     password: Yup.string().required('Password is required'),
   });
 
-  const handleLogin = (formValue: { username: string; password: string }) => {
-    const { username, password } = formValue;
-    console.log(username, password);
-    setMessage('');
-    setLoading(true);
-    login(username, password)
-      // login(username, password).then(
-      //   () => {
-      //     navigate('/profile');
-      //     window.location.reload();
-      //   },
-      //   (err) => {
-      //     const resMessage =
-      //       (err.response && err.response.data && err.response.data.message) ||
-      //       err.message ||
-      //       err.toString();
-      //     setLoading(false);
-      //     setMessage(resMessage);
-      //   }
-      // );
+  const handleLogin = (formValue: { email: string; password: string }) => {
+    const { email, password } = formValue;
+
+    login(email, password).then(
+      () => {
+        setLoading(true);
+        setMessage('You have successfully logged in!');
+        navigate('/profile');
+        window.location.reload();
+      },
+      (err: any) => {
+        const resMessage =
+          (err.response && err.response.data && err.response.data.message) ||
+          err.message ||
+          err.toString();
+        setLoading(false);
+        setMessage(resMessage);
+      }
+    );
   };
   // @ts-ignore
   return (
@@ -82,11 +81,11 @@ const Login: React.FC<LoginProps> = () => {
                       htmlFor="email"
                       className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                     >
-                      Your username
+                      Email
                     </label>
                     <Field
-                      name="username"
-                      type="text"
+                      name="email"
+                      type="email"
                       className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       placeholder="name@email.com"
                     />
@@ -161,11 +160,11 @@ const Login: React.FC<LoginProps> = () => {
                       Sign up
                     </Link>
                   </p>
-                  
+
                   {/* @ts-ignore */}
                 </Form>
               </Formik>
-                    <ConnectButton />
+              <ConnectButton />
             </div>
           </div>
         </div>

@@ -27,8 +27,7 @@ const BoardAdmin: React.FC = () => {
     longtitude: Number(''),
   };
   const authUser = JSON.parse(localStorage.getItem('user') || '{}');
-  const isAdmin =
-    authUser && authUser.roles && authUser.roles.includes('ROLE_ADMIN');
+  const isAdmin = authUser.role.toLowerCase() === 'admin';
   const validationSchema = Yup.object().shape({
     property: Yup.string().required('Property is required'),
     badrooms: Yup.string().required('Badrooms is required'),
@@ -272,6 +271,26 @@ const BoardAdmin: React.FC = () => {
                       />
                       <ErrorMessage
                         name="surface"
+                        component="div"
+                        className="text-red-900"
+                      />
+                    </div>
+                    <div>
+                      <label
+                        htmlFor="price"
+                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                      >
+                        Price
+                      </label>
+                      <Field
+                        type="number"
+                        name="price"
+                        id="price"
+                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                        placeholder="240 m²"
+                      />
+                      <ErrorMessage
+                        name="price"
                         component="div"
                         className="text-red-900"
                       />

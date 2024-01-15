@@ -25,11 +25,13 @@ const Header: React.FC = () => {
 
     window.addEventListener('resize', handleResize);
     const user = AuthService.getCurrentUser();
-
+      console.log(user);
     if (user) {
-      setShowAdminBoard(user.roles.includes('ROLE_ADMIN'));
+      setShowAdminBoard(user.role);
       setCurrentUser(user);
       console.log(currentUser);
+    }else{
+      setCurrentUser(undefined);
     }
 
     return () => {
@@ -72,7 +74,7 @@ const Header: React.FC = () => {
                   >
                     <img
                       className="h-8 w-8 rounded-full"
-                      src={currentUser.image}
+                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgca89Cjk-4kMRAvPKPMYI9AZ-xs_52BWz2g&usqp=CAU"
                     />
                   </button>
                   {isMenuOpen && (

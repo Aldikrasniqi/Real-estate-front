@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 const About: React.FC = () => {
   return (
     <>
@@ -19,12 +20,13 @@ const About: React.FC = () => {
               with easy access to freeways, buses and trolleys. . Laundry is
               available on premises.
             </p>
-            <button
+            <Link
+              to="/developers"
               className="py-2 px-4 bg-[#1DAEFF] text-white font-medium hover:text-white rounded-lg transition duration-300 w-32"
               style={{ boxShadow: '0px 4px 40px 0px #2D5981' }}
             >
               Read more
-            </button>
+            </Link>
           </div>
           <div className="flex flex-col justify-end items-end lg:w-2/5 lg:gap-6 gap-4 text-center">
             {/* projects */}

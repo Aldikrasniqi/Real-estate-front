@@ -6,7 +6,8 @@ import { getPublicContent } from '../services/user-service';
 import Contact from '../components/Contact';
 import Footer from '../layouts/Footer';
 import FilterCards from '../components/FilterCards';
-import FramerDrag from '../components/Framer-Drager';
+
+import Carousel from '../components/Carousel';
 // @ts-ignore
 const Home: React.FC = () => {
   const [content, setContent] = useState<string>('');
@@ -78,7 +79,8 @@ const Home: React.FC = () => {
         <About />
       </div>
       <div className="max-w-screen-xl mx-auto">
-        <FramerDrag />
+
+        <Carousel/>
       </div>
       <div className="max-w-screen-xl mx-auto">
         <Contact />
