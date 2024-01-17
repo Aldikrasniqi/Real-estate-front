@@ -78,8 +78,7 @@ const Home: React.FC = () => {
       >
         <About />
       </div>
-      <div className="max-w-screen-xl mx-auto">
-
+      <div className="mx-auto">
         <Carousel/>
       </div>
       <div className="max-w-screen-xl mx-auto">

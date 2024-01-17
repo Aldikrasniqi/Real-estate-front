@@ -305,7 +305,7 @@ const BoardAdmin: React.FC = () => {
                       {loading && (
                         <span className="spinner-border spinner-border-sm"></span>
                       )}
-                      <span>Login</span>
+                      <span>Submit</span>
                     </button>
                   </div>
                   {message && (

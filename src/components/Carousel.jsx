@@ -29,17 +29,20 @@ function Carousel() {
     }
   }, [prop.listings]);
   return (
-    <main className="flex flex-col items-center justify-between mt-28">
+    <main className="flex flex-col items-center  justify-between mt-28 overflow-hidden">
       <div className="px-6 py-4 mb-4 text-center">
         <h1 className="text-[#1DAEFF] text-4xl font-semibold">
           Other Projects
         </h1>
-        <span style={{ color: 'rgba(255, 255, 255, 0.50)' }} className='text-lg mt-4'>
+        <span
+          style={{ color: 'rgba(255, 255, 255, 0.50)' }}
+          className="text-lg mt-4"
+        >
           Other projects by us in different locations
         </span>
       </div>
       <MotionConfig transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}>
-        <div className="relative w-full max-w-[1500px] flex items-center">
+        <div className="relative w-full max-w-[900px] flex items-center">
           {/* Left/right controls */}
           <AnimatePresence>
             {isFocus && (
@@ -62,7 +65,7 @@ function Carousel() {
           </AnimatePresence>
           {/* List of images */}
           <motion.div
-            className="flex gap-4 flex-nowrap"
+            className="flex max-w-screen-xl w-full h-full relative flex-nowrap p-12 gap-32"
             animate={{ x: `calc(-${current * 100}% - ${current}rem)` }}
             onHoverStart={() => setIsFocus(true)}
             onHoverEnd={() => setIsFocus(false)}
@@ -71,13 +74,20 @@ function Carousel() {
               Array.isArray(prop.listings) &&
               prop.listings.length > 0 &&
               prop.listings.map((item, idx) => (
+               <>
                 <motion.img
                   key={idx}
                   src={item.image}
                   alt={item}
-                  animate={{ opacity: idx === current ? 1 : 0.3 }}
-                  className="aspect-[16/9] object-cover"
+                  animate={{
+                    opacity: idx === current ? 1 : 0.3,
+                    scale: idx === current ? 1.2 : 1,
+                  }}
+                  className="aspect-[16/9] object-cover border-4 rounded relative"
                 />
+                
+                </>
+                
               ))}
           </motion.div>
           {/* Controll pill */}
