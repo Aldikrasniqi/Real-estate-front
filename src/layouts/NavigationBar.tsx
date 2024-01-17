@@ -80,8 +80,7 @@ const Header: React.FC = () => {
                   {isMenuOpen && (
                     <div className="absolute right-0 mt-2 w-auto bg-white rounded-md shadow-lg py-2">
                       <span className="px-4 py-2 text-sm text-gray-700 font-bold">
-                        {currentUser.username}
-                        {currentUser.roles}
+                        {currentUser.email}
                       </span>
 
                       <hr className="my-1 border-gray-300" />
@@ -106,6 +105,12 @@ const Header: React.FC = () => {
                         className="block px-4 py-2 text-sm text-gray-700 font-bold hover:bg-gray-100 w-full text-left"
                       >
                         Developers
+                      </Link>
+                      <Link
+                        to="/agents"
+                        className="block px-4 py-2 text-sm text-gray-700 font-bold hover:bg-gray-100 w-full text-left"
+                      >
+                        Agents
                       </Link>
                       <button
                         className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left"
