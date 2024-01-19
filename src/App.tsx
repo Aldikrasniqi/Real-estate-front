@@ -8,6 +8,7 @@ import Register from './pages/Register';
 import Home from './pages/Home';
 import PropertyDetail from './pages/PropertyDetail';
 import Developers from './pages/Developers';
+import EditAgent from './pages/EditAgent';
 import Profile from './components/Profile';
 import BoardUser from './components/BoardUser';
 import BoardModerator from './components/BoardModerator';
@@ -38,6 +39,7 @@ const App: React.FC = () => {
                   <Route path="property/:id" element={<PropertyDetail />} />
                   <Route path="/agents" element={<Agents />} />
                   <Route path='/agents/create' element={<CreateAgent />} />
+                  <Route path='/agents/edit/:id' element={<EditAgent />} />
                 </Routes>
               </>
             }

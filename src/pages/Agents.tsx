@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { createAgent } from '../services/agent-service';
 import useAgents from '../hooks/useAgents';
 import { Link } from 'react-router-dom';
+import { deleteAgent } from '../services/agent-service';
 // @ts-ignore
 type LoginProps = {};
 
@@ -17,6 +18,21 @@ const Agents: React.FC<LoginProps> = () => {
       [agentId]: !prevStates[agentId],
     }));
   };
+  const handleDelete = (agentId: number) => () => {
+    deleteAgent(agentId).then(
+      () => {
+        alert('You have successfully deleted an agent!');
+        window.location.reload();
+      },
+      (err: any) => {
+        const resMessage =
+          (err.response && err.response.data && err.response.data.message) ||
+          err.message ||
+          err.toString();
+        alert(resMessage);
+      }
+    );
+  };
   return (
     <>
       <div className="flex mx-auto max-w-screen-xl items-center justify-between space-x-4 flex-wrap mt-8">
@@ -29,7 +45,7 @@ const Agents: React.FC<LoginProps> = () => {
           Add More
         </Link>
       </div>
-      <div className="flex mx-auto max-w-screen-xl items-center justify-center space-x-4 flex-wrap mt-10">
+      <div className="flex mx-auto gap-4 max-w-screen-xl items-center justify-center flex-wrap mt-10">
         {agents.map((agent: any) => (
           <div
             key={agent.id}
@@ -59,7 +75,7 @@ const Agents: React.FC<LoginProps> = () => {
               {dropdownStates[agent.id] && (
                 <div
                   id={`dropdown-${agent.id}`}
-                  className="z-10 text-base absolute top-40 list-none bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700"
+                  className="z-10 text-base absolute m-8 list-none bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700"
                 >
                   <ul
                     className="py-2"
@@ -67,7 +83,7 @@ const Agents: React.FC<LoginProps> = () => {
                   >
                     <li>
                       <Link
-                        to="/test"
+                        to={`edit/${agent.id}`}
                         className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
                       >
                         Edit
@@ -75,12 +91,12 @@ const Agents: React.FC<LoginProps> = () => {
                     </li>
 
                     <li>
-                      <Link
-                        to="#"
-                        className="block px-4 py-2 text-sm text-red-600 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                      <button
+                        onClick={handleDelete(agent.id)}
+                        className="block w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
                       >
                         Delete
-                      </Link>
+                      </button>
                     </li>
                   </ul>
                 </div>
@@ -89,8 +105,8 @@ const Agents: React.FC<LoginProps> = () => {
             <div className="flex flex-col items-center pb-10">
               <img
                 className="w-24 h-24 mb-3 rounded-full shadow-lg"
-                src="https://t3.ftcdn.net/jpg/03/02/88/46/360_F_302884605_actpipOdPOQHDTnFtp4zg4RtlWzhOASp.jpg"
-                alt="Bonnie image"
+                src="https://w7.pngwing.com/pngs/415/765/png-transparent-user-profile-linkedin-netwerk-money-order-fulfillment-round-face-saving-expert-moustache.png"
+                alt="Image of test"
               />
               <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">
                 {agent.name}

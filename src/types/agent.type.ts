@@ -1,5 +1,5 @@
 type Agent = {
-    // id: number;
+    id?: number;
     name: string;
     contactInfo: string;
     email: string;
