@@ -3,10 +3,13 @@ import { createAgent } from '../services/agent-service';
 import useAgents from '../hooks/useAgents';
 import { Link } from 'react-router-dom';
 import { deleteAgent } from '../services/agent-service';
+import useProperties from '../hooks/useProperties';
 // @ts-ignore
 type LoginProps = {};
 
 const Agents: React.FC<LoginProps> = () => {
+  const properties = useProperties();
+  console.log(properties);
   const agents = useAgents();
   const [dropdownStates, setDropdownStates] = useState<{
     [key: string]: boolean;
@@ -120,7 +123,7 @@ const Agents: React.FC<LoginProps> = () => {
 
               <div className="flex mt-4 md:mt-6">
                 <a
-                  href="#"
+                  href={`properties?agentId=${agent.id}`}
                   className="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                 >
                   Add Property

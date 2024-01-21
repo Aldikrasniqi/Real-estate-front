@@ -93,7 +93,7 @@ const Header: React.FC = () => {
                       {showAdminBoard && (
                         <span className="nav-item">
                           <Link
-                            to={'/admin'}
+                            to={'/properties'}
                             className="block px-4 py-2 text-sm text-gray-700 font-bold hover:bg-gray-100 w-full text-left"
                           >
                             Admin board

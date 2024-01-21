@@ -1,35 +1,20 @@
 import React from 'react';
-import Props from '../types/propertyTypes';
+import useProperties from '../hooks/useProperties';
 import { Link } from 'react-router-dom';
-import { usePropertyContext } from '../context/context.store';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronCircleDown } from '@fortawesome/free-solid-svg-icons';
-
-const PropertyCard = (props: { propertyData: Props[] }) => {
-  const property = usePropertyContext();
-  const [loading, setLoading] = React.useState(false);
-  const [cardsPerPage, setCardsPerPage] = React.useState(4);
-  const [pageNumber, setPageNumber] = React.useState(1);
-
-  const allCards = props.propertyData;
-  const lastIndex = pageNumber * cardsPerPage;
-  const currentCardsSlice = allCards.slice(0, lastIndex);
-
-  const handleShowMore = () => {
-    setLoading(true);
-    setTimeout(() => {
-      setPageNumber((prevPageNumber) => prevPageNumber + 1);
-      setLoading(false);
-    }, 1000);
-  };
+const Properties = () => {
+  const properties = useProperties()
+  console.log(properties)
 
   return (
     <>
-      {currentCardsSlice.map((property: any, index: any) => (
+      <h1>Properties</h1>
+      <div>
+      {properties.map((property: any, index: any) => (
         <div
           key={index}
           className="flex flex-col lg:w-1/2 p-4 h-[530px] rounded-lg overflow-hidden"
         >
+
             <img
               key={index}
               src={property.images}
@@ -39,7 +24,7 @@ const PropertyCard = (props: { propertyData: Props[] }) => {
           <div className="bg-[#161616] p-4 rounded-lg">
             <div className="flex flex-row justify-between">
               <h1 className="text-[#FFFBFB] text-2xl font-semibold">
-                {property.propType}
+                {property.amentities}
               </h1>
               <Link
                 to={`/property/${property.id}`}
@@ -97,24 +82,9 @@ const PropertyCard = (props: { propertyData: Props[] }) => {
           </div>
         </div>
       ))}
-      {allCards.length > lastIndex && (
-        <div className="flex justify-between mx-auto max-w-screen-xl flex-wrap mt-6">
-          <div className="flex flex-col items-center">
-            <FontAwesomeIcon
-              icon={faChevronCircleDown}
-              className="text-4xl text-[#A6A3A3] bg-black cursor-pointer rounded-full"
-              onClick={handleShowMore}
-            />
-            <span className="rounded-full "></span>
-
-            <span className="text-[#fffbfbe3] text-sm font-medium mt-1">
-              {loading ? 'Loading...' : 'View More'}
-            </span>
-          </div>
-        </div>
-      )}
+      </div>
     </>
   );
 };
 
-export default PropertyCard;
+export default Properties;

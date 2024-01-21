@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import mFilterSvg from '../libs/images/mi_filter.svg';
 import PropertyCard from './PropertyCard';
-import { propertyData } from '../libs/data';
-import { usePropertyContext } from '../context/context.store';
+// import { propertyData } from '../libs/data';
 import { Menu } from '@headlessui/react';
-
+import useProperties from '../hooks/useProperties';
 const FilterCards: React.FC = () => {
+  const propertyData = useProperties();
   const [activeFilter, setActiveFilter] = useState('All');
   const [filteredData, setFilteredData] = useState(propertyData);
   const filters = ['All', 'Studio', '1 Bedroom', '2 Bedrooms'];
@@ -15,18 +15,30 @@ const FilterCards: React.FC = () => {
   };
 
   useEffect(() => {
+    if (!propertyData) {
+      return;
+    }
+    console.log(activeFilter)
+    console.log(filteredData)
     if (activeFilter === 'All') {
+      console.log('true')
       setFilteredData(propertyData);
     } else {
+      console.log('false')
       setFilteredData(
-        propertyData.filter((property) =>
+        propertyData.filter((property: any) =>
           activeFilter === 'Studio'
-            ? property.bedroom === 0
-            : property.bedroom.toString() === activeFilter[0]
+            ? property.bedrooms === 0
+            : property.bedrooms.toString() === activeFilter[0]
         )
       );
     }
-  }, [activeFilter]);
+  }, [activeFilter, propertyData]);
+
+  if (!propertyData) {
+    // Show a loading indicator (spinner, loader animation, etc.)
+    return <div className="text-center mt-4">Loading...</div>;
+  }
 
   return (
     <>
@@ -97,7 +109,11 @@ const FilterCards: React.FC = () => {
         </div>
       </div>
       <div className="flex flex-row flex-wrap mx-auto max-w-screen-xl justify-between">
+      {Array.isArray(filteredData) && filteredData.length > 0 ? (
         <PropertyCard propertyData={filteredData} />
+      ) : (
+        <p>No properties found.</p>
+      )}
       </div>
     </>
   );

@@ -3,77 +3,102 @@ import { getAdminBoard } from '../services/user-service';
 import * as Yup from 'yup';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import { createProperty } from '../services/property-service';
-const BoardAdmin: React.FC = () => {
+const BoardAdmin = ({ agentId }: { agentId: string }) => {
+
   const [content, setContent] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
   const [message, setMessage] = useState<string>('');
   const initialValues: {
+    streetAddress: string;
+    city: string;
+    state: string;
+    zipCode: string;
+    status: string;
     property: string;
     badrooms: number;
     bathrooms: number;
     description: string;
     surface: number;
-    price: number;
-    langtitude: number;
-    longtitude: number;
+    amentities: string;
+    images: string;
   } = {
+    streetAddress: '',
+    city: '',
+    state: '',
+    zipCode: '',
+    status: '',
     property: '',
     badrooms: Number(''),
     bathrooms: Number(''),
     description: '',
     surface: Number(''),
-    price: Number(''),
-    langtitude: Number(''),
-    longtitude: Number(''),
+    amentities: '',
+    images: '',
   };
   const authUser = JSON.parse(localStorage.getItem('user') || '{}');
   const isAdmin = authUser.role.toLowerCase() === 'admin';
   const validationSchema = Yup.object().shape({
+    streetAddress: Yup.string().required('Street address is required'),
+    city: Yup.string().required('City is required'),
+    state: Yup.string().required('State is required'),
+    zipCode: Yup.string().required('Zip code is required'),
+    status: Yup.string().required('Status is required'),
     property: Yup.string().required('Property is required'),
     badrooms: Yup.string().required('Badrooms is required'),
     bathrooms: Yup.string().required('Bathrooms is required'),
     description: Yup.string().required('Description is required'),
     surface: Yup.string().required('Surface is required'),
-    price: Yup.string().required('Price is required'),
-    langtitude: Yup.string().required('Langtitude is required'),
-    longtitude: Yup.string().required('Longtitude is required'),
+    amentities: Yup.string().required('Amentities is required'),
+    images: Yup.string().required('Images is required'),
   });
 
   const handleSubmit = (formValue: {
+    streetAddress: string;
+    city: string;
+    state: string;
+    zipCode: string;
+    status: string;
     property: string;
     badrooms: number;
     bathrooms: number;
     description: string;
     surface: number;
-    price: number;
-    langtitude: number;
-    longtitude: number;
+    amentities: string;
+    images: string;
   }) => {
     const {
+      streetAddress,
+      city,
+      state,
+      zipCode,
+      status,
       property,
       badrooms,
       bathrooms,
       description,
       surface,
-      price,
-      langtitude,
-      longtitude,
+      amentities,
+      images
     } = formValue;
 
     setMessage('Property added successfully!');
     setLoading(true);
     createProperty(
+      streetAddress,
+      city,
+      state,
+      zipCode,
+      status,
       property,
       badrooms,
       bathrooms,
       description,
       surface,
-      price,
-      langtitude,
-      longtitude
+      amentities,
+      images,
+      agentId
     ).then(
       () => {
-        console.log(formValue);
         setLoading(false);
         setMessage('Property added successfully!');
         formValue.property = '';
@@ -81,9 +106,8 @@ const BoardAdmin: React.FC = () => {
         formValue.bathrooms = 0;
         formValue.description = '';
         formValue.surface = Number('');
-        formValue.price = 0;
-        formValue.langtitude = 0;
-        formValue.longtitude = 0;
+
+
       },
       (err) => {
         const resMessage =
@@ -132,6 +156,110 @@ const BoardAdmin: React.FC = () => {
               >
                 <Form>
                   <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
+                    <div>
+                      <label
+                        htmlFor="streetAddress"
+                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                      >
+                        Street Adress
+                      </label>
+                      <Field
+                        type="text"
+                        name="streetAddress"
+                        id="streetAddress"
+                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                        placeholder="d. 1, 10000 Pristina"
+                      />
+                      <ErrorMessage
+                        name="streetAddress"
+                        component="div"
+                        className="text-red-900"
+                      />
+                    </div>
+                    <div>
+                      <label
+                        htmlFor="city"
+                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                      >
+                        City
+                      </label>
+                      <Field
+                        type="text"
+                        name="city"
+                        id="city"
+                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                        placeholder="Pristine"
+                      />
+                      <ErrorMessage
+                        name="city"
+                        component="div"
+                        className="text-red-900"
+                      />
+                    </div>
+                    <div>
+                      <label
+                        htmlFor="state"
+                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                      >
+                        State
+                      </label>
+                      <Field
+                        type="text"
+                        name="state"
+                        id="state"
+                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                        placeholder="Kosovo"
+                      />
+                      <ErrorMessage
+                        name="state"
+                        component="div"
+                        className="text-red-900"
+                      />
+                    </div>
+                    <div>
+                      <label
+                        htmlFor="zipCode"
+                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                      >
+                        Zip Code
+                      </label>
+                      <Field
+                        type="text"
+                        name="zipCode"
+                        id="zipCode"
+                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                        placeholder="Pristine"
+                      />
+                      <ErrorMessage
+                        name="zipCode"
+                        component="div"
+                        className="text-red-900"
+                      />
+                    </div>
+                    <div className="sm:col-span-2">
+                      <label
+                        htmlFor="status"
+                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                      >
+                        Status
+                      </label>
+                      <Field
+                        as="select"
+                        id="status"
+                        name="status"
+                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                      >
+                        <option value="">Select category</option>
+                        <option value="AVAILABLE">Available</option>
+                        <option value="PENDING">Pending</option>
+                        <option value="SOLD">Sold</option>
+                      </Field>
+                      <ErrorMessage
+                        name="status"
+                        component="div"
+                        className="text-red-900"
+                      />
+                    </div>
                     <div className="sm:col-span-2">
                       <label
                         htmlFor="property"
@@ -177,60 +305,20 @@ const BoardAdmin: React.FC = () => {
                     </div>
                     <div className="w-full">
                       <label
-                        htmlFor="price"
+                        htmlFor="bathrooms"
                         className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                       >
                         Bathrooms
                       </label>
                       <Field
                         type="number"
-                        name="price"
-                        id="price"
+                        name="bathrooms"
+                        id="bathrooms"
                         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                         placeholder="4"
                       />
                       <ErrorMessage
-                        name="price"
-                        component="div"
-                        className="text-red-900"
-                      />
-                    </div>
-                    <div>
-                      <label
-                        htmlFor="category"
-                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                      >
-                        Langtitude
-                      </label>
-                      <Field
-                        type="number"
-                        name="langtitude"
-                        id="langtitude"
-                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                        placeholder="21.027763"
-                      />
-                      <ErrorMessage
-                        name="langtitude"
-                        component="div"
-                        className="text-red-900"
-                      />
-                    </div>
-                    <div>
-                      <label
-                        htmlFor="item-weight"
-                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                      >
-                        Longtitude
-                      </label>
-                      <Field
-                        type="number"
-                        name="longtitude"
-                        id="longtitude"
-                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                        placeholder="25.744839354280487"
-                      />
-                      <ErrorMessage
-                        name="longtitude"
+                        name="bathrooms"
                         component="div"
                         className="text-red-900"
                       />
@@ -277,20 +365,40 @@ const BoardAdmin: React.FC = () => {
                     </div>
                     <div>
                       <label
-                        htmlFor="price"
+                        htmlFor="amentities"
                         className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                       >
-                        Price
+                        Amentities
                       </label>
                       <Field
-                        type="number"
-                        name="price"
-                        id="price"
+                        type="text"
+                        name="amentities"
+                        id="amentities"
                         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                        placeholder="240 m²"
+                        placeholder="pool, garage, garden"
                       />
                       <ErrorMessage
-                        name="price"
+                        name="amentities"
+                        component="div"
+                        className="text-red-900"
+                      />
+                    </div>
+                    <div>
+                      <label
+                        htmlFor="images"
+                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                      >
+                        Images
+                      </label>
+                      <Field
+                        type="text"
+                        name="images"
+                        id="images"
+                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                        placeholder="http://example.com/image1.jpg"
+                      />
+                      <ErrorMessage
+                        name="amentities"
                         component="div"
                         className="text-red-900"
                       />
