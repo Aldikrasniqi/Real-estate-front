@@ -1,12 +1,10 @@
 import React from 'react';
 import Props from '../types/propertyTypes';
 import { Link } from 'react-router-dom';
-import { usePropertyContext } from '../context/context.store';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronCircleDown } from '@fortawesome/free-solid-svg-icons';
 
 const PropertyCard = (props: { propertyData: Props[] }) => {
-  const property = usePropertyContext();
   const [loading, setLoading] = React.useState(false);
   const [cardsPerPage, setCardsPerPage] = React.useState(4);
   const [pageNumber, setPageNumber] = React.useState(1);
@@ -39,7 +37,7 @@ const PropertyCard = (props: { propertyData: Props[] }) => {
           <div className="bg-[#161616] p-4 rounded-lg">
             <div className="flex flex-row justify-between">
               <h1 className="text-[#FFFBFB] text-2xl font-semibold">
-                {property.propType}
+                {property.type === 'APARTMENT' ? 'For Sale' : 'For Rent'}
               </h1>
               <Link
                 to={`/property/${property.id}`}
@@ -67,7 +65,7 @@ const PropertyCard = (props: { propertyData: Props[] }) => {
                   color: 'rgba(255, 251, 251, 0.65)',
                 }}
               >
-                {property.bedroom} Bedroom
+                {property.bedrooms} Bedroom
               </span>
               <span
                 className="w-1/3 text-center border p-2"
@@ -80,7 +78,7 @@ const PropertyCard = (props: { propertyData: Props[] }) => {
                   color: 'rgba(255, 251, 251, 0.65)',
                 }}
               >
-                {property.bath} Baths
+                {property.bathrooms} Baths
               </span>
               <span
                 className="w-1/3 text-center border rounded-r-md p-2"
@@ -91,7 +89,7 @@ const PropertyCard = (props: { propertyData: Props[] }) => {
                   color: 'rgba(255, 251, 251, 0.65)',
                 }}
               >
-                {property.area} sq ft
+                {property.size} sq ft
               </span>
             </div>
           </div>

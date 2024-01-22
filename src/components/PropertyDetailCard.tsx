@@ -4,27 +4,39 @@ import Map from './Map';
 import FramerDrag from './Framer-Drager';
 
 function PropertyDetailCard(propertyDetail: any) {
+  console.log(propertyDetail)
+  if (!propertyDetail || !propertyDetail.props) {
+    return <div className="text-center mt-4">Loading...</div>;
+  }
+  const {
+    images,
+    bedrooms,
+    bathrooms,
+    propType,
+    size,
+  } = propertyDetail.props;
   return (
    <>
-     <div className="lg:w-[1000px] w-auto p-6">
+     {propertyDetail.props && (
+      <div className="lg:w-[1000px] w-auto p-6">
       <img
-        src={propertyDetail.props.propImg[0]}
+        src={propertyDetail.props.images}
         alt=""
         style={{ width: '100%', borderRadius: '0.625rem' }}
       />
       <div className="flex flex-wrap justify-between mt-4">
         <img
-          src={propertyDetail.props.propImg[0]}
+          src={propertyDetail.props.images}
           alt=""
           style={{ width: '300px', borderRadius: '0.625rem' }}
         />
         <img
-          src={propertyDetail.props.propImg[0]}
+          src={propertyDetail.props.images}
           alt=""
           style={{ width: '300px', borderRadius: '0.625rem' }}
         />
         <img
-          src={propertyDetail.props.propImg[0]}
+          src={propertyDetail.props.images}
           alt=""
           style={{ width: '300px', borderRadius: '0.625rem' }}
         />
@@ -55,7 +67,7 @@ function PropertyDetailCard(propertyDetail: any) {
               fill="white"
             />
           </svg>
-          {propertyDetail.props.bedroom}
+          {propertyDetail.props.bedrooms}
         </span>
         <span
           className="w-1/3 text-center border p-2 flex justify-center items-center gap-2 flex justify-center items-center gap-2"
@@ -94,7 +106,7 @@ function PropertyDetailCard(propertyDetail: any) {
               fill="white"
             />
           </svg>{' '}
-          {propertyDetail.props.bath}
+          {propertyDetail.props.bathrooms}
         </span>
 
         <span
@@ -134,7 +146,7 @@ function PropertyDetailCard(propertyDetail: any) {
               fill="white"
             />
           </svg>{' '}
-          {propertyDetail.props.propType}
+          {propertyDetail.props.amentities}
         </span>
         <span
           className="w-1/3 text-center border rounded-r-md p-2 flex justify-center items-center gap-2"
@@ -187,26 +199,19 @@ function PropertyDetailCard(propertyDetail: any) {
               </clipPath>
             </defs>
           </svg>{' '}
-          {propertyDetail.props.area} sq ft
+          {propertyDetail.props.size} sq ft
         </span>
       </div>
       <div className="mt-10 p-6">
         <h1 className='text-[#1DAEFF] font-medium text-xl mb-2'>Description</h1>
         <p style={{ color: 'rgba(255, 251, 251, 0.75)' }} className='font-normal leading-7 mb-10 text-md'>
-          Enchanting three bedroom, three bath home with spacious one bedroom,
-          one bath cabana, in-laws quarters. Charming living area features
-          fireplace and fabulous art deco details. Formal dining room.
-          Remodelled kitchen with granite white cabinetry and stainless
-          appliances. Lovely master bedroom has updated bath, beautiful view of
-          the pool. Guest bedrooms have walk-in, cedar closets. Delightful
-          backyard; majestic oaks surround the free form pool and expansive
-          patio, wet bar and grill. Enchanting three bedroom,
+          {propertyDetail.props.description}
         </p>
       </div>
       <div className="mt-10 mb-20 p-6">
         <h1 className='text-[#1DAEFF] font-medium text-xl mb-2'>Property Video</h1>
         <img
-        src={propertyDetail.props.propImg[0]}
+        src={propertyDetail.props.images}
         alt=""
         style={{ width: '100%', height: '400px', borderRadius: '0.625rem', }}
         />
@@ -218,6 +223,7 @@ function PropertyDetailCard(propertyDetail: any) {
           
       
     </div>
+     )}
    </>
   );
 }

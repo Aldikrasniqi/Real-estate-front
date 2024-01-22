@@ -8,7 +8,7 @@ export const createProperty = async (
   zipCode: string,
   status: string,
   property: string,
-  badrooms: number,
+  bedrooms: number,
   bathrooms: number,
   description: string,
   surface: number,
@@ -24,32 +24,62 @@ export const createProperty = async (
       zipCode,
     },
     status,
-    property,
-    badrooms,
+    type: property,
+    bedrooms,
     bathrooms,
     description,
     size: surface,
     amentities,
-    images
+    images,
   };
+  console.log(formData);
   try {
     if (token) {
       const user = JSON.parse(token);
-      
-      const response = await axios.post(`${API_AGENT_URL}properties?agentId=${agentId}`, formData, {
-        headers: {
-          Authorization: 'Bearer ' + user.access_token,
-          'Content-Type': 'application/json',
-        },
-      });
+
+      const response = await axios.post(
+        `${API_AGENT_URL}properties?agentId=${agentId}`,
+        formData,
+        {
+          headers: {
+            Authorization: 'Bearer ' + user.access_token,
+            'Content-Type': 'application/json',
+          },
+        }
+      );
       console.log(response);
       if (response.status >= 200 && response.status < 300) {
         return response.data;
       } else {
-        throw new Error(`Failed to create property. Status: ${response.status}`);
+        throw new Error(
+          `Failed to create property. Status: ${response.status}`
+        );
       }
     }
   } catch (error) {
     console.error('Error creating property:', error);
+  }
+};
+
+export const getPropertyDetails = async (propertyId: number) => {
+  try {
+    if (token) {
+      const user = JSON.parse(token);
+
+      const response = await axios.get(
+        `${API_AGENT_URL}properties/${propertyId}`,
+        {
+          headers: {
+            Authorization: 'Bearer ' + user.access_token,
+            'Content-Type': 'application/json',
+          },
+          
+        }
+      );
+      console.log(response);
+      return response.data;
+    }
+  } catch (error) {
+    console.log(error);
   }
 };
