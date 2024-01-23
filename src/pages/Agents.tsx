@@ -4,6 +4,7 @@ import useAgents from '../hooks/useAgents';
 import { Link } from 'react-router-dom';
 import { deleteAgent } from '../services/agent-service';
 import useProperties from '../hooks/useProperties';
+import { useAlertContext } from '../context/alert.context';
 // @ts-ignore
 type LoginProps = {};
 
@@ -21,21 +22,25 @@ const Agents: React.FC<LoginProps> = () => {
       [agentId]: !prevStates[agentId],
     }));
   };
-  const handleDelete = (agentId: number) => () => {
-    deleteAgent(agentId).then(
-      () => {
-        alert('You have successfully deleted an agent!');
-        window.location.reload();
-      },
-      (err: any) => {
-        const resMessage =
-          (err.response && err.response.data && err.response.data.message) ||
-          err.message ||
-          err.toString();
-        alert(resMessage);
-      }
-    );
-  };
+  const { onOpen } = useAlertContext();
+    const handleDelete = (agentId: number, agentName: string) => () => {
+      deleteAgent(agentId).then(
+        () => {
+          onOpen(
+            'success',
+            `Agent "${agentName}" and its associated properties have been deleted.`
+          );
+        },
+        (err: any) => {
+          const resMessage =
+            (err.response && err.response.data && err.response.data.message) ||
+            err.message ||
+            err.toString();
+          onOpen('Error', resMessage);
+        }
+      );
+    };
+  
   return (
     <>
       <div className="flex mx-auto max-w-screen-xl items-center justify-between space-x-4 flex-wrap mt-8">
@@ -95,7 +100,7 @@ const Agents: React.FC<LoginProps> = () => {
 
                     <li>
                       <button
-                        onClick={handleDelete(agent.id)}
+                         onClick={handleDelete(agent.id, agent.name)}
                         className="block w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
                       >
                         Delete

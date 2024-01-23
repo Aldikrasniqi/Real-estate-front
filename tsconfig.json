@@ -25,5 +25,5 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", ".env", "src/hooks/useBalance.jsx", "src/components/Carousel.jsx"]
+  "include": ["src/**/*.ts", "src/**/*.tsx", ".env", "src/hooks/useBalance.jsx", "src/components/Carousel.jsx", "src/components/Alert.js"]
 }

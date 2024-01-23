@@ -4,6 +4,7 @@ import PropertyCard from './PropertyCard';
 // import { propertyData } from '../libs/data';
 import { Menu } from '@headlessui/react';
 import useProperties from '../hooks/useProperties';
+import { Link } from 'react-router-dom';
 const FilterCards: React.FC = () => {
   const propertyData = useProperties();
   const [activeFilter, setActiveFilter] = useState('All');
@@ -18,13 +19,12 @@ const FilterCards: React.FC = () => {
     if (!propertyData) {
       return;
     }
-    console.log(activeFilter)
-    console.log(filteredData)
+
     if (activeFilter === 'All') {
-      console.log('true')
+      console.log('true');
       setFilteredData(propertyData);
     } else {
-      console.log('false')
+      console.log('false');
       setFilteredData(
         propertyData.filter((property: any) =>
           activeFilter === 'Studio'
@@ -108,12 +108,22 @@ const FilterCards: React.FC = () => {
           </Menu>
         </div>
       </div>
+
       <div className="flex flex-row flex-wrap mx-auto max-w-screen-xl justify-between">
-      {Array.isArray(filteredData) && filteredData.length > 0 ? (
-        <PropertyCard propertyData={filteredData} />
-      ) : (
-        <p>No properties found.</p>
-      )}
+        {Array.isArray(filteredData) && filteredData.length > 0 ? (
+          <PropertyCard propertyData={filteredData} />
+        ) : (
+          <>
+            <div className="max-w-screen-xl mx-auto text-center items-center">
+              <h1 className="font-bold m-4 pt-2 text-xl ">
+                Please create property
+              </h1>
+              <Link to="/agents" className=" m-4 pt-2 text-xl underline">
+                Create Property
+              </Link>
+            </div>
+          </>
+        )}
       </div>
     </>
   );

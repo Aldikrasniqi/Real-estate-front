@@ -90,7 +90,7 @@ const Login: React.FC<LoginProps> = () => {
                       placeholder="name@email.com"
                     />
                     <ErrorMessage
-                      name="username"
+                      name="email"
                       component="div"
                       className="text-red-900"
                     />
@@ -137,7 +137,7 @@ const Login: React.FC<LoginProps> = () => {
                   </div>
                   <button
                     type="submit"
-                    className="w-full text-slate-800 my-4 bg-white hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                    className="w-full dark:text-slate-800 my-4 bg-slate-800 text-white hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-white dark:hover:bg-primary-700 dark:focus:ring-primary-800"
                   >
                     {loading && (
                       <span className="spinner-border spinner-border-sm"></span>

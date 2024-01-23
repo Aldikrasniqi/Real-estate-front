@@ -503,7 +503,7 @@ const ConnectButton = () => {
             </svg>
             Connect with MetaMask
           </button>
-          <div>{error}</div>
+          <div className='text-red-700'>{error}</div>
         </>
       )}
     </>

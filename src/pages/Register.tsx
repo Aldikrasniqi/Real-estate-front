@@ -44,6 +44,9 @@ const Register: React.FC = () => {
       (response) => {
         setMessage(response.data.message);
         setSuccessful(true);
+        if(response.status === 200) {
+          window.location.href = '/login';
+        }
       },
       (err) => {
         const resMessage =
@@ -99,7 +102,7 @@ const Register: React.FC = () => {
                         <ErrorMessage
                           name="username"
                           component="div"
-                          className="alert alert-danger"
+                          className="alert alert-danger text-red-700"
                         />
                       </div>
 
@@ -119,7 +122,7 @@ const Register: React.FC = () => {
                         <ErrorMessage
                           name="email"
                           component="div"
-                          className="alert alert-danger"
+                          className="alert alert-danger text-red-700"
                         />
                       </div>
 
@@ -139,7 +142,7 @@ const Register: React.FC = () => {
                         <ErrorMessage
                           name="password"
                           component="div"
-                          className="alert alert-danger"
+                          className="alert alert-danger text-red-700"
                         />
                       </div>
 

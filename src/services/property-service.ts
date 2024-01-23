@@ -83,3 +83,30 @@ export const getPropertyDetails = async (propertyId: number) => {
     console.log(error);
   }
 };
+// TODO: Implement updateProperty
+export const updateProperty = async (payload: any) => {
+
+};
+
+export const deleteProperty = async (propertyId: number) => {
+  try {
+    if (token) {
+      const user = JSON.parse(token);
+
+      const response = await axios.delete(
+        `${API_AGENT_URL}properties/${propertyId}`,
+        {
+          headers: {
+            Authorization: 'Bearer ' + user.access_token,
+            'Content-Type': 'application/json',
+          },
+        }
+      );
+      
+      // console.log(response);
+      // return response.status;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};

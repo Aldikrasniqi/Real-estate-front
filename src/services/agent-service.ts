@@ -67,6 +67,7 @@ export const deleteAgent = async (agentId: number) => {
         },
       });
       console.log(response);
+      return response.data;
     }
   } catch (error) {
     console.error('Error deleting agent:', error);
