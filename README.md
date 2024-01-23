@@ -14,3 +14,6 @@ npm install
 Once you've installed the dependencies, you can start the development server:
 #### npm start
 This command will launch the application in development mode. You can access it by opening your web browser and visiting http://localhost:3000.
+
+
+![Image alt text](image.png)
